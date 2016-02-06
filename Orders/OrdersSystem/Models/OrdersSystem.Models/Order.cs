@@ -19,6 +19,9 @@
 
         public OrderStatus Status { get; set; }
 
+        [Range(1, int.MaxValue, ErrorMessage = "Device count can not be less than 1")]
+        public int DeviceCount { get; set; }
+
         public int DeviceId { get; set; }
 
         [ForeignKey("DeviceId")]
