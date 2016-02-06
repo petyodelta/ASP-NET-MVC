@@ -30,7 +30,7 @@
 
         [MinLength(3, ErrorMessage = "Telephone must be between 3 and 150 symbols")]
         [MaxLength(150, ErrorMessage = "Telephone must be between 3 and 150 symbols")]
-        public string Telephone { get; set; }
+        public string PhoneNumber { get; set; }
 
         public virtual ICollection<Order> Orders
         {
