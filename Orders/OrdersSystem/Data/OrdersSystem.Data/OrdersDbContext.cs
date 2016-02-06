@@ -1,19 +1,23 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using OrdersSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrdersSystem.Data
+﻿namespace OrdersSystem.Data
 {
-    public class OrdersDbContext : IdentityDbContext<User>
+    using System.Data.Entity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using OrdersSystem.Models;
+
+    public class OrdersDbContext : IdentityDbContext<User>, IOrdersDbContext
     {
         public OrdersDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public virtual IDbSet<Category> Categories { get; set; }
+
+        public virtual IDbSet<Device> Devices { get; set; }
+
+        public virtual IDbSet<Order> Orders { get; set; }
+
+        public virtual IDbSet<Customer> Customers { get; set; }
 
         public static OrdersDbContext Create()
         {
