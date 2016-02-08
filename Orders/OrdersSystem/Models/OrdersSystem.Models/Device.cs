@@ -6,11 +6,11 @@
 
     public class Device
     {
-        private ICollection<Order> orders;
+        private ICollection<InOrder> inOrders;
 
         public Device()
         {
-            this.orders = new HashSet<Order>();
+            this.inOrders = new HashSet<InOrder>();
         }
 
         public int Id { get; set; }
@@ -25,10 +25,10 @@
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<Order> Orders
+        public virtual ICollection<InOrder> InOrders
         {
-            get { return this.orders; }
-            set { this.orders = value; }
+            get { return this.inOrders; }
+            set { this.inOrders = value; }
         }
     }
 }

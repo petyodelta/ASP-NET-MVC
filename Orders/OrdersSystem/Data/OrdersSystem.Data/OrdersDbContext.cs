@@ -15,9 +15,13 @@
 
         public virtual IDbSet<Device> Devices { get; set; }
 
-        public virtual IDbSet<Order> Orders { get; set; }
+        public virtual IDbSet<InOrder> InOrders { get; set; }
+
+        public virtual IDbSet<OutOrder> OutOrders { get; set; }
 
         public virtual IDbSet<Customer> Customers { get; set; }
+
+        public virtual IDbSet<Supplier> Suppliers { get; set; }
 
         public static OrdersDbContext Create()
         {

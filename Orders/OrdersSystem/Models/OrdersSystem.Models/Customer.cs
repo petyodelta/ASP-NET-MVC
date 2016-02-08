@@ -5,11 +5,11 @@
 
     public class Customer
     {
-        private ICollection<Order> orders;
+        private ICollection<InOrder> inOrders;
 
         public Customer()
         {
-            this.orders = new HashSet<Order>();
+            this.inOrders = new HashSet<InOrder>();
         }
 
         public int Id { get; set; }
@@ -32,10 +32,10 @@
         [MaxLength(150, ErrorMessage = "Telephone must be between 3 and 150 symbols")]
         public string PhoneNumber { get; set; }
 
-        public virtual ICollection<Order> Orders
+        public virtual ICollection<InOrder> InOrders
         {
-            get { return this.orders; }
-            set { this.orders = value; }
+            get { return this.inOrders; }
+            set { this.inOrders = value; }
         }
     }
 }

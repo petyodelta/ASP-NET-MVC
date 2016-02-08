@@ -8,11 +8,15 @@
     {
         IDbSet<Category> Categories { get; set; }
 
-        IDbSet<Order> Orders { get; set; }
+        IDbSet<InOrder> InOrders { get; set; }
+
+        IDbSet<OutOrder> OutOrders { get; set; }
 
         IDbSet<Device> Devices { get; set; }
 
         IDbSet<Customer> Customers { get; set; }
+
+        IDbSet<Supplier> Suppliers { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

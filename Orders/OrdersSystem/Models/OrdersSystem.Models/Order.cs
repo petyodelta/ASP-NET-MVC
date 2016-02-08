@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Order
+    public abstract class Order
     {
         public int Id { get; set; }
 
@@ -19,27 +19,9 @@
 
         public OrderStatus Status { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Device count can not be less than 1")]
-        public int DeviceCount { get; set; }
-
-        public int DeviceId { get; set; }
-
-        [ForeignKey("DeviceId")]
-        public virtual Device Device { get; set; }
-
-        public int CustomerId { get; set; }
-
-        [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
-
         public string WorkerId { get; set; }
 
         [ForeignKey("WorkerId")]
         public virtual User Worker { get; set; }
-
-        public string AuthorId { get; set; }
-
-        [ForeignKey("AuthorId")]
-        public  virtual User Author { get; set; }
     }
 }
