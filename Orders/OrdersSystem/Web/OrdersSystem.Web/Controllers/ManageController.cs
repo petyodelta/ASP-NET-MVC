@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using OrdersSystem.Web.Models;
+using OrdersSystem.Web.ViewModels.Manage;
 
 namespace OrdersSystem.Web.Controllers
 {

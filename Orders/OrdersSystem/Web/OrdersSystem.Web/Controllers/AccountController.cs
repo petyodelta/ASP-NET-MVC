@@ -8,8 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using OrdersSystem.Web.Models;
+using OrdersSystem.Web.ViewModels.Manage;
 using OrdersSystem.Models;
+using OrdersSystem.Web.ViewModels.Account;
 
 namespace OrdersSystem.Web.Controllers
 {

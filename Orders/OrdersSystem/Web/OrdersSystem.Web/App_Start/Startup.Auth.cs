@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using OrdersSystem.Web.Models;
+using OrdersSystem.Web.ViewModels.Manage;
 using OrdersSystem.Data;
 using OrdersSystem.Models;
 

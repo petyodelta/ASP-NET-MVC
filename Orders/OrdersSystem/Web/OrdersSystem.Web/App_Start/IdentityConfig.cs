@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using OrdersSystem.Web.Models;
+using OrdersSystem.Web.ViewModels.Manage;
 using OrdersSystem.Models;
 using OrdersSystem.Data;
 
