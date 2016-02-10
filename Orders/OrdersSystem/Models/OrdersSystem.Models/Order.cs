@@ -9,8 +9,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Description name must be between 3 and 5000 symbols")]
-        [MaxLength(5000, ErrorMessage = "Description name must be between 3 and 5000 symbols")]
+        [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
+        [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
         public string Description { get; set; }
 
         public DateTime StartDate { get; set; }

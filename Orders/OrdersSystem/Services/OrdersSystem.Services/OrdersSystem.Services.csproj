@@ -49,11 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriesServices.cs" />
+    <Compile Include="Contracts\ICategoriesServices.cs" />
+    <Compile Include="Contracts\ICustomersServices.cs" />
+    <Compile Include="Contracts\IDevicesServices.cs" />
+    <Compile Include="Contracts\IOutOrdersServices.cs" />
+    <Compile Include="CustomersServices.cs" />
+    <Compile Include="DevicesServices.cs" />
+    <Compile Include="OutOrdersServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\OrdersSystem.Data\OrdersSystem.Data.csproj">
+      <Project>{78b81f14-d081-4f0c-86b5-5667eda54418}</Project>
+      <Name>OrdersSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\OrdersSystem.Models\OrdersSystem.Models.csproj">
+      <Project>{5a8cebe7-4f2e-49e9-9cdc-382784e63b61}</Project>
+      <Name>OrdersSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
