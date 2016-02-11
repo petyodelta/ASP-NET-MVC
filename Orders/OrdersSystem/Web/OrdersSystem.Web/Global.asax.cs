@@ -1,8 +1,11 @@
 ﻿namespace OrdersSystem.Web
 {
+    using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+
+    using Infrastructure.Mapping;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -16,6 +19,9 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DatabaseConfig.Initialize();
+
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

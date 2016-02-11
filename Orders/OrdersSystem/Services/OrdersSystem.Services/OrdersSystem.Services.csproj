@@ -53,9 +53,11 @@
     <Compile Include="Contracts\ICategoriesServices.cs" />
     <Compile Include="Contracts\ICustomersServices.cs" />
     <Compile Include="Contracts\IDevicesServices.cs" />
+    <Compile Include="Contracts\IInOrdersServices.cs" />
     <Compile Include="Contracts\IOutOrdersServices.cs" />
     <Compile Include="CustomersServices.cs" />
     <Compile Include="DevicesServices.cs" />
+    <Compile Include="InOrdersServices.cs" />
     <Compile Include="OutOrdersServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
