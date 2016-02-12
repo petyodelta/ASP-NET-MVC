@@ -6,6 +6,7 @@
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
     using OrdersSystem.Web.ViewModels.InOrders;
+    using Microsoft.AspNet.Identity;
 
     using Ninject;
 
@@ -16,6 +17,12 @@
 
         [Inject]
         public ICustomersServices CustomersSurvices { get; set; }
+
+        [Inject]
+        public IDevicesServices DevicesServices { get; set; }
+
+        [Inject]
+        public IUsersServices UsersServices { get; set; }
 
         public ActionResult Index()
         {
@@ -40,13 +47,41 @@
         public ActionResult Create()
         {
             var newOrder = new InOrderInputModel();
-            newOrder.Customers = this.CustomersSurvices.GetAll()
+            newOrder.Customers = this.CustomersSurvices
+                .GetAll()
                 .Select(c => new SelectListItem()
                 {
                     Text = c.Name,
                     Value = c.Id.ToString()
                 })
                 .ToList();
+            newOrder.Devices = this.DevicesServices
+                .GetAll()
+                .Select(d => new SelectListItem()
+                {
+                    Text = d.Name,
+                    Value = d.Id.ToString()
+                })
+                .ToList();
+            newOrder.Authors = this.UsersServices
+                .GetAll()
+                .Where(u => u.Roles.Any(r => r.RoleId == "320260dd-421b-41d1-ae01-3a78a5d2d459"))
+                .Select(a => new SelectListItem()
+                {
+                    Text = a.UserName,
+                    Value = a.Id.ToString()
+                })
+                .ToList();
+            newOrder.Workers = this.UsersServices
+                .GetAll()
+                .Select(w => new SelectListItem()
+                {
+                    Text = w.UserName,
+                    Value = w.Id.ToString()
+                })
+                .ToList();
+            
+           
             return this.View(newOrder);
         }
     }
