@@ -22,5 +22,16 @@
 
             return View(inOrders);
         }
+
+        public ActionResult Details(int id)
+        {
+            var inOrder = this.InOrdersServices
+                .GetAll()
+                .Where(x => x.Id == id)
+                .To<InOrderViewModel>()
+                .FirstOrDefault();
+
+            return View(inOrder);
+        }
     }
 }

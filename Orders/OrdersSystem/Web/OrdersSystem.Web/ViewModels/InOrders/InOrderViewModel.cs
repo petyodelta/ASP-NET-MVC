@@ -13,11 +13,9 @@
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
-
-        public bool IsRepair { get; set; }
-
+        
         public int DeviceCount { get; set; }
-
+        
         public OrderStatus Status { get; set; }
 
         public Device Device { get; set; }
