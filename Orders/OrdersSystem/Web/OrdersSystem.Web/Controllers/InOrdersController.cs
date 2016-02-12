@@ -33,5 +33,10 @@
 
             return View(inOrder);
         }
+
+        public ActionResult Create()
+        {
+            return this.View();
+        }
     }
 }
