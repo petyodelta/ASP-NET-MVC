@@ -6,12 +6,9 @@
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
     using OrdersSystem.Web.ViewModels.InOrders;
-    using Microsoft.AspNet.Identity;
 
     using Ninject;
-    using System;
-    using Models;
-    public class InOrdersController : Controller
+    public class InOrdersController : BaseController
     {
         [Inject]
         public IInOrdersServices InOrdersServices { get; set; }

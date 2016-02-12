@@ -6,7 +6,8 @@
     using OrdersSystem.Web.Infrastructure.Mapping;
     using Ninject;
     using ViewModels.InOrders;
-    public class HomeController : Controller
+
+    public class HomeController : BaseController
     {
         [Inject]
         public IInOrdersServices InOrdersServices { get; set; }
