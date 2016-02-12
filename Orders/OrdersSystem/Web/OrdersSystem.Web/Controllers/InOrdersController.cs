@@ -14,6 +14,9 @@
         [Inject]
         public IInOrdersServices InOrdersServices { get; set; }
 
+        [Inject]
+        public ICustomersServices CustomersSurvices { get; set; }
+
         public ActionResult Index()
         {
             var inOrders = InOrdersServices.GetAll()
@@ -36,7 +39,15 @@
 
         public ActionResult Create()
         {
-            return this.View();
+            var newOrder = new InOrderInputModel();
+            newOrder.Customers = this.CustomersSurvices.GetAll()
+                .Select(c => new SelectListItem()
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                })
+                .ToList();
+            return this.View(newOrder);
         }
     }
 }
