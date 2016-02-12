@@ -27,6 +27,11 @@
         @Html.TextBoxFor(m => m.DeviceCount, new { @class = "form-control", type = "number"})
         @Html.ValidationMessageFor(m => m.DeviceCount, "", new { @class = "text-danger" })
         <br />
+        @Html.LabelFor(m => m.EndDate)
+        <br />
+        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+        <br />
+        <br />
         @Html.LabelFor(m => m.AuthorId)
         @Html.DropDownListFor(m => m.AuthorId, Model.Authors, new { @class = "form-control" })
         <br />
@@ -42,4 +47,12 @@
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-default" />
     </div>
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".datepicker").datepicker("setDate", new Date());
+        });
+    </script>       
 }

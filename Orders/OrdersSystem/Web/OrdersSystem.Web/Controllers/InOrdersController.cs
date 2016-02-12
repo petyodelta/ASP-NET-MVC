@@ -9,7 +9,8 @@
     using Microsoft.AspNet.Identity;
 
     using Ninject;
-
+    using System;
+    using Models;
     public class InOrdersController : Controller
     {
         [Inject]
@@ -79,10 +80,17 @@
                     Text = w.UserName,
                     Value = w.Id.ToString()
                 })
-                .ToList();
-            
+                .ToList();            
            
             return this.View(newOrder);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(InOrderInputModel model)
+        {
+            
+            return this.RedirectToAction("Index");
         }
     }
 }
