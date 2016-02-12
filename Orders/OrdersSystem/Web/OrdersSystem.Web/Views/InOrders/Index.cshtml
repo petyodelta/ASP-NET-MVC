@@ -1,0 +1,13 @@
+﻿@model IEnumerable<OrdersSystem.Web.ViewModels.InOrders.InOrderViewModel> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Incoming Orders</h2>
+@foreach (var order in Model)
+{
+    <div>@order.Customer.Name</div>
+    <div>@order.Device.Name</div>
+}
+
+
