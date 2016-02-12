@@ -1,0 +1,14 @@
+﻿@model IEnumerable<OrdersSystem.Web.ViewModels.InOrders.InOrderViewModel>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @item.Device.Name
+                </div>
+            </div>
+        </div>
+    }
+</div>

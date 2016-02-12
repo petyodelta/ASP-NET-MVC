@@ -320,6 +320,7 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\InOrders\Details.cshtml" />
+    <Content Include="Views\Shared\_CacheHomePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
