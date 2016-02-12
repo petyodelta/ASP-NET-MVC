@@ -33,13 +33,10 @@
 
         public ActionResult Details(int id)
         {
-            var inOrder = this.InOrdersServices
-                .GetAll()
-                .Where(x => x.Id == id)
-                .To<InOrderViewModel>()
-                .FirstOrDefault();
-
-            return View(inOrder);
+            var inOrder = this.InOrdersServices.GetById(id);
+            var viewModel = this.Mapper.Map<InOrderViewModel>(inOrder);
+            
+            return View(viewModel);
         }
 
         public ActionResult Create()
