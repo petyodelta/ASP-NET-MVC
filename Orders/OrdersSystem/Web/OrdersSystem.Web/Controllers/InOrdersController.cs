@@ -8,6 +8,8 @@
     using OrdersSystem.Web.ViewModels.InOrders;
 
     using Ninject;
+    using Models;
+    using System;
     public class InOrdersController : BaseController
     {
         [Inject]
@@ -83,7 +85,10 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
         {
-            
+            // TODO: Can not bind EndDate
+            model.StartDate = DateTime.Now;
+            var newInOrder = this.Mapper.Map<InOrder>(model);
+            this.InOrdersServices.Create(newInOrder);
             return this.RedirectToAction("Index");
         }
     }

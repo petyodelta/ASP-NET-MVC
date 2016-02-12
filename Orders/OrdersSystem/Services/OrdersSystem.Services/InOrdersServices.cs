@@ -15,9 +15,12 @@
             this.inOrders = inOrders;
         }
 
-        public InOrder Create(InOrder newOutOrder)
+        public InOrder Create(InOrder newInOrder)
         {
-            throw new NotImplementedException();
+            this.inOrders.Add(newInOrder);
+            this.inOrders.SaveChanges();
+
+            return newInOrder;
         }
 
         public void DeleteById(int id)

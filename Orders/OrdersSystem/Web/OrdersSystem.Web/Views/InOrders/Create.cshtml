@@ -29,7 +29,7 @@
         <br />
         @Html.LabelFor(m => m.EndDate)
         <br />
-        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+        @Html.TextBoxFor(m => m.EndDate, new { id = "datepicker"})
         <br />
         <br />
         @Html.LabelFor(m => m.AuthorId)
@@ -50,9 +50,9 @@
 }
 
 @section scripts{
-    <script>
-        $(function () {
-            $(".datepicker").datepicker("setDate", new Date());
-        });
+    <script>   
+        $(document).ready(function() {     
+            $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy hh:MM:ss' });
+        })
     </script>       
 }
