@@ -10,6 +10,7 @@
     using Ninject;
     using Models;
     using System;
+    using Microsoft.AspNet.Identity;
     public class InOrdersController : BaseController
     {
         [Inject]
@@ -60,15 +61,6 @@
                     Value = d.Id.ToString()
                 })
                 .ToList();
-            newOrder.Authors = this.UsersServices
-                .GetAll()
-                .Where(u => u.Roles.Any(r => r.RoleId == "320260dd-421b-41d1-ae01-3a78a5d2d459"))
-                .Select(a => new SelectListItem()
-                {
-                    Text = a.UserName,
-                    Value = a.Id.ToString()
-                })
-                .ToList();
             newOrder.Workers = this.UsersServices
                 .GetAll()
                 .Select(w => new SelectListItem()
@@ -87,6 +79,7 @@
         {
             // Bind date works only with browser datepicker
             model.StartDate = DateTime.Now;
+            model.AuthorId = User.Identity.GetUserId();
             var newInOrder = this.Mapper.Map<InOrder>(model);
             this.InOrdersServices.Create(newInOrder);
             return this.RedirectToAction("Index");
