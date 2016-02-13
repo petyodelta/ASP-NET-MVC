@@ -442,11 +442,13 @@
     <Content Include="Views\OutOrders\Create.cshtml" />
     <Content Include="Views\InOrders\Create.cshtml" />
     <Content Include="Views\InOrders\Edit.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
