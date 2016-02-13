@@ -85,7 +85,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
         {
-            // TODO: Can not bind EndDate
+            // Bind date works only with browser datepicker
             model.StartDate = DateTime.Now;
             var newInOrder = this.Mapper.Map<InOrder>(model);
             this.InOrdersServices.Create(newInOrder);
