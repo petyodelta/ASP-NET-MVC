@@ -15,9 +15,10 @@
                     <p>
                         <strong>Count: </strong>@item.DeviceCount
                     </p>
-                    <p>
-                        <strong>End Date: </strong>@item.EndDate
-                    </p>
+                    <div>
+                        <strong>End Date: </strong>
+                        @Html.DisplayFor(m => item.EndDate)
+                    </div>
                 </div>
             </div>
         </div>
