@@ -84,5 +84,11 @@
             this.InOrdersServices.Create(newInOrder);
             return this.RedirectToAction("Index");
         }
+
+        //public ActionResult Edit(int id)
+        //{
+        //    var inOrder = this.InOrdersServices.GetById(id);
+        //    var viewModel = this.Mapper.Map<>
+        //}
     }
 }

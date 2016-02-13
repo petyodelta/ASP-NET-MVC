@@ -29,8 +29,8 @@
         <br />
         @Html.LabelFor(m => m.EndDate)
         <br />
-        
-        <input type="date" name="EndDate" value="" class="datepicker form-control" />
+        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+        @*<input type="date" name="EndDate" value="" class="datepicker form-control" />*@
         <br />
         <br />
         @Html.LabelFor(m => m.WorkerId)
@@ -45,5 +45,14 @@
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-default" />
     </div>
+}
+@section scripts{
+    <script>
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            dateformat: 'dd-mm-yyyy'
+        })
+    </script>
+
 }
 
