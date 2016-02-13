@@ -24,8 +24,7 @@
         {
             var outOrders = this.OutOrdersServices
                 .GetAll()
-                .To<OutOrderViewModel>()
-                .ToList();
+                .To<OutOrderViewModel>();
 
             return View(outOrders);
         }

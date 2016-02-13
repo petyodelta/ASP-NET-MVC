@@ -30,7 +30,7 @@
 
         public IQueryable<InOrder> GetAll()
         {
-            return this.inOrders.All();
+            return this.inOrders.All().OrderByDescending(x => x.Id);
         }
 
         public InOrder GetById(int id)

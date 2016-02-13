@@ -22,10 +22,10 @@
         <strong>Status: </strong>@Model.Status
     </p>
     <p>
-        <strong>Ordered on: </strong>@Model.StartDate
+        <strong>Ordered on: </strong>@Model.StartDate.Date.ToString("dd MMM yyyy")
     </p>
     <p>
-        <strong>End Date: </strong>@Model.EndDate
+        <strong>End Date: </strong>@Model.EndDate.Date.ToString("dd MMM yyyy")
     </p>
     <p>
         <strong>Ordered By: </strong>@Model.Author.UserName

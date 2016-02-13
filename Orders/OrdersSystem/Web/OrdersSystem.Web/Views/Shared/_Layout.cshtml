@@ -24,9 +24,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.IsInRole("Worker") || User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Incoming Orders", "Index", "InOrders")</li>
-                        <li>@Html.ActionLink("Outgoing Orders", "Index", "OutOrders")</li>
-                        <li>@Html.ActionLink("Repairs", "Index", "Repairs")</li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Orders<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Incoming Orders", "Index", "InOrders")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Outgoing Orders", "Index", "OutOrders")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Repairs", "Index", "Repairs")</li>
+                                <li class="divider"></li>
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Devices", "Index", "Devices")</li>
                     }
                     @if (User.IsInRole("Admin"))
@@ -50,6 +58,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/gridmvc")
     @RenderSection("scripts", required: false)
 </body>
 </html>

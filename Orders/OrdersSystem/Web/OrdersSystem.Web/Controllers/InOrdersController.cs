@@ -28,8 +28,7 @@
         {
             var inOrders = InOrdersServices
                 .GetAll()
-                .To<InOrderViewModel>()
-                .ToList();
+                .To<InOrderViewModel>();
 
             return View(inOrders);
         }
