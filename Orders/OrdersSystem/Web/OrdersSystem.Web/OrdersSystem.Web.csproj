@@ -326,12 +326,12 @@
     <Content Include="Views\InOrders\Details.cshtml" />
     <Content Include="Views\Shared\_CacheHomePartial.cshtml" />
     <Content Include="Views\InOrders\Create.cshtml" />
+    <Content Include="Views\OutOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\OutOrders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

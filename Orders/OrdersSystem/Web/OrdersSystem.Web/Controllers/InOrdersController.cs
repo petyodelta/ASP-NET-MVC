@@ -26,7 +26,8 @@
 
         public ActionResult Index()
         {
-            var inOrders = InOrdersServices.GetAll()
+            var inOrders = InOrdersServices
+                .GetAll()
                 .To<InOrderViewModel>()
                 .ToList();
 
