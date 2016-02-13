@@ -19,9 +19,9 @@
 
         public OrderStatus Status { get; set; }
 
-        public string WorkerId { get; set; }
+        public string AuthorId { get; set; }
 
-        [ForeignKey("WorkerId")]
-        public virtual User Worker { get; set; }
+        [ForeignKey("AuthorId")]
+        public virtual User Author { get; set; }        
     }
 }

@@ -32,7 +32,7 @@
             outOrderToUpdate.EndDate = outOrder.EndDate;
             outOrderToUpdate.StartDate = outOrder.StartDate;
             outOrderToUpdate.SupplierId = outOrder.SupplierId;
-            outOrderToUpdate.WorkerId = outOrder.WorkerId;
+            outOrderToUpdate.AuthorId = outOrder.AuthorId;
 
             this.outOrders.SaveChanges();
             return outOrder;

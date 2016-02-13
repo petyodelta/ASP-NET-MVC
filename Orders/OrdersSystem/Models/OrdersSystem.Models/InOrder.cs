@@ -20,9 +20,9 @@
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
 
-        public string AuthorId { get; set; }
+        public string WorkerId { get; set; }
 
-        [ForeignKey("AuthorId")]
-        public  virtual User Author { get; set; }
+        [ForeignKey("WorkerId")]
+        public virtual User Worker { get; set; }
     }
 }
