@@ -254,6 +254,7 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\OutOrders\OutOrderInputModel.cs" />
     <Compile Include="ViewModels\OutOrders\OutOrderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +328,8 @@
     <Content Include="Views\Shared\_CacheHomePartial.cshtml" />
     <Content Include="Views\InOrders\Create.cshtml" />
     <Content Include="Views\OutOrders\Index.cshtml" />
+    <Content Include="Views\OutOrders\Details.cshtml" />
+    <Content Include="Views\OutOrders\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

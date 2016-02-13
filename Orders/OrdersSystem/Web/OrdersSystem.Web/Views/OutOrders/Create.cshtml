@@ -1,0 +1,35 @@
+﻿@model OrdersSystem.Web.ViewModels.OutOrders.OutOrderInputModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Outgoing Order</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SupplierId)
+        @Html.DropDownListFor(m => m.SupplierId, Model.Suppliers, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+        <br />
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+        <br />
+        @Html.LabelFor(m => m.EndDate)
+        <br />
+        <input type="date" name="EndDate" value="" class="datepicker form-control" />
+        <br />
+        <br />
+        @Html.LabelFor(m => m.Status)
+        @Html.EnumDropDownListFor(m => m.Status, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+}

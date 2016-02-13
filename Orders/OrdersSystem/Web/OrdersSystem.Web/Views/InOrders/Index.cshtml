@@ -5,7 +5,7 @@
 }
 
 <h2>All Incoming Orders</h2>
-@Html.ActionLink("Create New Order", "Create")
+@Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
 
 @Html.Grid(Model).Columns(columns =>
 {

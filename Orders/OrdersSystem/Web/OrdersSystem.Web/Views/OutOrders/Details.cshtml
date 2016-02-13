@@ -1,4 +1,4 @@
-﻿@model OrdersSystem.Web.ViewModels.InOrders.InOrderViewModel
+﻿@model OrdersSystem.Web.ViewModels.OutOrders.OutOrderViewModel
 @{
     ViewBag.Title = "Details";
 }
@@ -7,13 +7,7 @@
 <hr />
 <div>
     <p>
-        <strong>Customer: </strong>@Model.Customer.Name
-    </p>
-    <p>
-        <strong>Device: </strong>@Model.Device.Name
-    </p>
-    <p>
-        <strong>Device Count: </strong>@Model.DeviceCount
+        <strong>Customer: </strong>@Model.Supplier.Name
     </p>
     <p>
         <strong>Description: </strong>@Model.Description
@@ -30,7 +24,5 @@
     <p>
         <strong>Ordered By: </strong>@Model.Author.UserName
     </p>
-    <p>
-        <strong>Person In Charge: </strong>@Model.Worker.UserName
-    </p>
 </div>
+
