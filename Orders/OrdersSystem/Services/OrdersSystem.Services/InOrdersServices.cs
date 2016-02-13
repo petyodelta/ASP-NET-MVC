@@ -25,7 +25,7 @@
 
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            this.inOrders.Delete(id);
         }
 
         public IQueryable<InOrder> GetAll()
@@ -38,9 +38,20 @@
             return this.inOrders.GetById(id);
         }
 
-        public InOrder Update(int id, InOrder outOrder)
+        public InOrder Update(int id, InOrder inOrder)
         {
-            throw new NotImplementedException();
+            var inOrderToUpdate = this.inOrders.GetById(id);
+            inOrderToUpdate.Description = inOrder.Description;
+            inOrderToUpdate.CustomerId = inOrder.CustomerId;
+            inOrderToUpdate.DeviceId = inOrder.DeviceId;
+            inOrderToUpdate.DeviceCount = inOrder.DeviceCount;
+            inOrderToUpdate.Status = inOrder.Status;
+            inOrderToUpdate.EndDate = inOrder.EndDate;
+            inOrderToUpdate.WorkerId = inOrder.WorkerId;
+
+            this.inOrders.SaveChanges();
+
+            return inOrderToUpdate;
         }
     }
 }

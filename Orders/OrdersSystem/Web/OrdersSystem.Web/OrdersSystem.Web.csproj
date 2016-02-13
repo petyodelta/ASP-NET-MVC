@@ -244,6 +244,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\InOrders\InOrderEditViewModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderInputModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -436,10 +437,11 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\InOrders\Details.cshtml" />
     <Content Include="Views\Shared\_CacheHomePartial.cshtml" />
-    <Content Include="Views\InOrders\Create.cshtml" />
     <Content Include="Views\OutOrders\Index.cshtml" />
     <Content Include="Views\OutOrders\Details.cshtml" />
     <Content Include="Views\OutOrders\Create.cshtml" />
+    <Content Include="Views\InOrders\Create.cshtml" />
+    <Content Include="Views\InOrders\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

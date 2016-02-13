@@ -77,7 +77,6 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
         {
-            // Bind date works only with browser datepicker
             model.StartDate = DateTime.Now;
             model.AuthorId = User.Identity.GetUserId();
             var newInOrder = this.Mapper.Map<InOrder>(model);
@@ -85,10 +84,47 @@
             return this.RedirectToAction("Index");
         }
 
-        //public ActionResult Edit(int id)
-        //{
-        //    var inOrder = this.InOrdersServices.GetById(id);
-        //    var viewModel = this.Mapper.Map<>
-        //}
+        public ActionResult Edit(int id)
+        {
+            var inOrder = this.InOrdersServices.GetById(id);
+            var viewModel = this.Mapper.Map<InOrderEditViewModel>(inOrder);
+
+            viewModel.Customers = this.CustomersSurvices
+                .GetAll()
+                .Select(c => new SelectListItem()
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                })
+                .ToList();
+            viewModel.Devices = this.DevicesServices
+                .GetAll()
+                .Select(d => new SelectListItem()
+                {
+                    Text = d.Name,
+                    Value = d.Id.ToString()
+                })
+                .ToList();
+            viewModel.Workers = this.UsersServices
+                .GetAll()
+                .Select(w => new SelectListItem()
+                {
+                    Text = w.UserName,
+                    Value = w.Id.ToString()
+                })
+                .ToList();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(InOrderEditViewModel model)
+        {
+            var inOrder = this.Mapper.Map<InOrder>(model);
+            this.InOrdersServices.Update(model.Id, inOrder);
+
+            return this.RedirectToAction("Details", new { id = model.Id });
+        }
     }
 }
