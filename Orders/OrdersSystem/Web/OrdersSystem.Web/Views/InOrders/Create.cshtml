@@ -27,9 +27,6 @@
         @Html.TextBoxFor(m => m.DeviceCount, new { @class = "form-control", type = "number"})
         @Html.ValidationMessageFor(m => m.DeviceCount, "", new { @class = "text-danger" })
         <br />
-        @*@Html.LabelFor(m => m.EndDate)
-        <br />
-        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })*@
         @Html.EditorFor(m => m.EndDate)
         <br />
         <br />
