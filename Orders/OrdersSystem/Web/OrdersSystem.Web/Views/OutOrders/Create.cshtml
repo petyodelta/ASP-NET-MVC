@@ -20,9 +20,7 @@
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
         <br />
-        @Html.LabelFor(m => m.EndDate)
-        <br />
-        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+        @Html.EditorFor(m => m.EndDate)
         <br />
         <br />
         @Html.LabelFor(m => m.Status)

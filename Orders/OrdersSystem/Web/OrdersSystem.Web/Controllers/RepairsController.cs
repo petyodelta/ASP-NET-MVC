@@ -1,14 +1,15 @@
 ﻿namespace OrdersSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using Services.Contracts;
     using System.Web.Mvc;
-    using Ninject;
-    using Infrastructure.Mapping;
-    using ViewModels.Repairs;
-    using System;
     using Microsoft.AspNet.Identity;
     using Models;
+    using Ninject;
+    using Infrastructure.Mapping;
+    using ViewModels.Repairs;    
+
     public class RepairsController : BaseController
     {
         [Inject]
