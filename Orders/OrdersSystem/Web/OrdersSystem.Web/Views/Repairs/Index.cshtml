@@ -1,17 +1,19 @@
-﻿@model IEnumerable<OrdersSystem.Web.ViewModels.OutOrders.OutOrderViewModel>
+﻿@model IEnumerable<OrdersSystem.Web.ViewModels.Repairs.RepairsViewModel>
 @using GridMvc.Html
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>All Outgoing Orders</h2>
-@Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
+<h2>All Repairs Orders</h2>
+@Html.ActionLink("Create New Repair Order", "Create", null, new { @class = "btn btn-primary" })
 
 @Html.Grid(Model).Columns(columns =>
 {
-    columns.Add(x => x.Supplier.Name).Titled("Supplier").SetWidth(110).Sortable(true).Filterable(true);
+    columns.Add(x => x.Customer.Name).Titled("Customer").SetWidth(110).Sortable(true).Filterable(true);
+    columns.Add(x => x.Device.Name).Titled("Device").SetWidth(110).Sortable(true).Filterable(true);
     columns.Add(x => x.EndDate).Titled("End Date").SetWidth(110).Sortable(true).Format("{0:dd/MM/yyyy}").Filterable(true);
     columns.Add(x => x.Status).Titled("Order Status").SetWidth(110).Sortable(true);
     columns.Add().Titled("Details").Encoded(false).Sanitized(false).SetWidth(30)
         .RenderValueAs(x => Html.ActionLink("See Details", "Details", new { x.Id }));
 }).WithPaging(10)
+

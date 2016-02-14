@@ -11,6 +11,7 @@
     using Models;
     using System;
     using Microsoft.AspNet.Identity;
+
     public class InOrdersController : BaseController
     {
         [Inject]
@@ -29,6 +30,7 @@
         {
             var inOrders = InOrdersServices
                 .GetAll()
+                .Where(x => x.IsRepair == false)
                 .To<InOrderViewModel>();
 
             return View(inOrders);
@@ -77,6 +79,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
         {
+            model.IsRepair = false;
             model.StartDate = DateTime.Now;
             model.AuthorId = User.Identity.GetUserId();
             var newInOrder = this.Mapper.Map<InOrder>(model);

@@ -224,6 +224,7 @@
     <Compile Include="Controllers\InOrdersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OutOrdersController.cs" />
+    <Compile Include="Controllers\RepairsController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -257,6 +258,8 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\OutOrders\OutOrderInputModel.cs" />
     <Compile Include="ViewModels\OutOrders\OutOrderViewModel.cs" />
+    <Compile Include="ViewModels\Repairs\RepairInputModel.cs" />
+    <Compile Include="ViewModels\Repairs\RepairsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -443,6 +446,8 @@
     <Content Include="Views\InOrders\Create.cshtml" />
     <Content Include="Views\InOrders\Edit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Repairs\Index.cshtml" />
+    <Content Include="Views\Repairs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

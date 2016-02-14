@@ -30,7 +30,6 @@
         @Html.LabelFor(m => m.EndDate)
         <br />
         @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
-        @*<input type="date" name="EndDate" value="" class="datepicker form-control" />*@
         <br />
         <br />
         @Html.LabelFor(m => m.WorkerId)
@@ -38,20 +37,23 @@
         <br />
         @Html.LabelFor(m => m.Status)
         @Html.EnumDropDownListFor(m => m.Status, new { @class = "form-control" })
-        <br />
-        @Html.LabelFor(m => m.IsRepair)
-        @Html.CheckBoxFor(m => m.IsRepair)
     </div>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-default" />
     </div>
 }
+
 @section scripts{
     <script>
-        $('.datepicker').datepicker({
-            format: 'dd-MM-yyyy',
-            dateformat: 'dd-MM-yyyy'
-        })
+        $(document).ready(function () {
+            var today = new Date();
+            $('.datepicker').val("");
+            $('.datepicker').datepicker({
+                format: 'dd-MM-yyyy',
+                dateformat: 'dd-MM-yyyy',
+                startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+            })
+        });
     </script>
 }
 
