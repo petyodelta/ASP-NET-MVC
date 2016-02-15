@@ -1,0 +1,11 @@
+﻿@model IEnumerable<OrdersSystem.Web.ViewModels.Devices.DeviceViewModel>
+@using GridMvc.Html
+
+<div>@DateTime.Now</div>
+@Html.ActionLink("Add New Device", "Add", null, new { @class = "btn btn-primary" })
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Name).Titled("Name").SetWidth(110).Sortable(true).Filterable(true);
+    columns.Add(x => x.Category.Name).Titled("Category").SetWidth(110).Sortable(true).Filterable(true);
+}).WithPaging(10)

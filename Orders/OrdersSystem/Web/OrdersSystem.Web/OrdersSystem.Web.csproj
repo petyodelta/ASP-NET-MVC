@@ -220,6 +220,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DevicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InOrdersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Devices\DeviceViewModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderEditViewModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderInputModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderViewModel.cs" />
@@ -452,6 +454,8 @@
     <Content Include="Views\Repairs\Details.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\OutOrders\Edit.cshtml" />
+    <Content Include="Views\Devices\Index.cshtml" />
+    <Content Include="Views\Shared\_AllDevicesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

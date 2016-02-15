@@ -61,7 +61,7 @@
     <Compile Include="Contracts\IUsersServices.cs" />
     <Compile Include="CustomersServices.cs" />
     <Compile Include="DevicesServices.cs" />
-    <Compile Include="HttpCacheService.cs" />
+    <Compile Include="CacheService.cs" />
     <Compile Include="InOrdersServices.cs" />
     <Compile Include="OutOrdersServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
