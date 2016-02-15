@@ -30,7 +30,6 @@
             outOrderToUpdate.Description = outOrder.Description;
             outOrderToUpdate.Status = outOrder.Status;
             outOrderToUpdate.EndDate = outOrder.EndDate;
-            outOrderToUpdate.StartDate = outOrder.StartDate;
             outOrderToUpdate.SupplierId = outOrder.SupplierId;
             outOrderToUpdate.AuthorId = outOrder.AuthorId;
 

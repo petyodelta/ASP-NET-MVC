@@ -57,13 +57,47 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(OutOrderInputModel model)
         {
-            // Bind date works only with browser datepicker
             model.StartDate = DateTime.Now;
             model.AuthorId = User.Identity.GetUserId();
             var newOutOrder = this.Mapper.Map<OutOrder>(model);
             this.OutOrdersServices.Create(newOutOrder);
 
             return this.RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var outOrder = this.OutOrdersServices.GetById(id);
+            var viewModel = this.Mapper.Map<OutOrderEditViewModel>(outOrder);
+
+            viewModel.Suppliers = this.SuppliersServices
+                .GetAll()
+                .Select(c => new SelectListItem()
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                })
+                .ToList();
+            viewModel.Authors = this.UsersServices
+                .GetAll()
+                .Select(w => new SelectListItem()
+                {
+                    Text = w.UserName,
+                    Value = w.Id.ToString()
+                })
+                .ToList();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(OutOrderEditViewModel model)
+        {
+            var outOrder = this.Mapper.Map<OutOrder>(model);
+            this.OutOrdersServices.Update(model.Id, outOrder);
+
+            return this.RedirectToAction("Details", new { id = model.Id });
         }
     }
 }
