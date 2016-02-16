@@ -78,13 +78,19 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(RepairInputModel model)
         {
-            model.IsRepair = true;
-            model.StartDate = DateTime.Now;
-            model.AuthorId = User.Identity.GetUserId();
-            var newRepairOrder = this.Mapper.Map<InOrder>(model);
-            this.InOrdersServices.Create(newRepairOrder);
+            if (this.ModelState.IsValid)
+            {
+                model.IsRepair = true;
+                model.StartDate = DateTime.Now;
+                model.AuthorId = User.Identity.GetUserId();
+                var newRepairOrder = this.Mapper.Map<InOrder>(model);
+                this.InOrdersServices.Create(newRepairOrder);
 
-            return this.RedirectToAction("Index");
+                TempData["Success"] = "Repair order created";
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View("Create", model);
         }
     }
 }

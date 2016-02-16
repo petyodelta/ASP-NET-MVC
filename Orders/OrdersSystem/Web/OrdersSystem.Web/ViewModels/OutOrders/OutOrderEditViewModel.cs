@@ -18,11 +18,6 @@
 
         public string AuthorId { get; set; }
 
-        public int DeviceId { get; set; }
-
-        [Range(1, int.MaxValue, ErrorMessage = "Device count must be greater than 0")]
-        public int DeviceCount { get; set; }
-
         public int SupplierId { get; set; }
 
         public DateTime EndDate { get; set; }

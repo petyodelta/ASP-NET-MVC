@@ -79,12 +79,19 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
         {
-            model.IsRepair = false;
-            model.StartDate = DateTime.Now;
-            model.AuthorId = User.Identity.GetUserId();
-            var newInOrder = this.Mapper.Map<InOrder>(model);
-            this.InOrdersServices.Create(newInOrder);
-            return this.RedirectToAction("Index");
+            if (this.ModelState.IsValid)
+            {
+                model.IsRepair = false;
+                model.StartDate = DateTime.Now;
+                model.AuthorId = User.Identity.GetUserId();
+                var newInOrder = this.Mapper.Map<InOrder>(model);
+                this.InOrdersServices.Create(newInOrder);
+
+                TempData["Success"] = "Incoming order created";
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View("Create", model);            
         }
 
         public ActionResult Edit(int id)
@@ -124,10 +131,15 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(InOrderEditViewModel model)
         {
-            var inOrder = this.Mapper.Map<InOrder>(model);
-            this.InOrdersServices.Update(model.Id, inOrder);
+            if (this.ModelState.IsValid)
+            {
+                var inOrder = this.Mapper.Map<InOrder>(model);
+                this.InOrdersServices.Update(model.Id, inOrder);
+                TempData["Success"] = "Incoming order updated";
+                return this.RedirectToAction("Details", new { id = model.Id });
+            }
 
-            return this.RedirectToAction("Details", new { id = model.Id });
+            return this.View("Edit", model);           
         }
     }
 }

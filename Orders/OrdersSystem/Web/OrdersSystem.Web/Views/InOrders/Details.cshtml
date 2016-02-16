@@ -5,6 +5,12 @@
 
 <h2>Details</h2>
 <hr />
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-dismissible alert-success notification col-md-3 pull-right">
+        <strong>@TempData["Success"]</strong>
+    </div>
+}
 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
 <div>
     <p>

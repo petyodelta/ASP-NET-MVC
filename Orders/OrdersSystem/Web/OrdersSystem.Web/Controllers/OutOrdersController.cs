@@ -57,12 +57,18 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(OutOrderInputModel model)
         {
-            model.StartDate = DateTime.Now;
-            model.AuthorId = User.Identity.GetUserId();
-            var newOutOrder = this.Mapper.Map<OutOrder>(model);
-            this.OutOrdersServices.Create(newOutOrder);
+            if (this.ModelState.IsValid)
+            {
+                model.StartDate = DateTime.Now;
+                model.AuthorId = User.Identity.GetUserId();
+                var newOutOrder = this.Mapper.Map<OutOrder>(model);
+                this.OutOrdersServices.Create(newOutOrder);
 
-            return this.RedirectToAction("Index");
+                TempData["Success"] = "Supply order created";
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View("Create", model);
         }
 
         public ActionResult Edit(int id)
@@ -94,10 +100,16 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(OutOrderEditViewModel model)
         {
-            var outOrder = this.Mapper.Map<OutOrder>(model);
-            this.OutOrdersServices.Update(model.Id, outOrder);
+            if (this.ModelState.IsValid)
+            {
+                var outOrder = this.Mapper.Map<OutOrder>(model);
+                this.OutOrdersServices.Update(model.Id, outOrder);
 
-            return this.RedirectToAction("Details", new { id = model.Id });
+                TempData["Success"] = "Outgoing order edited";
+                return this.RedirectToAction("Details", new { id = model.Id });
+            }
+
+            return this.View("Edit", model);
         }
     }
 }
