@@ -27,11 +27,11 @@
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Orders<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Incoming Orders", "Index", "InOrders")</li>
+                                <li>@Html.ActionLink("Incoming Orders", "Index", "InOrders", new { area = "" }, null)</li>
                                 <li class="divider"></li>
-                                <li>@Html.ActionLink("Outgoing Orders", "Index", "OutOrders")</li>
+                                <li>@Html.ActionLink("Outgoing Orders", "Index", "OutOrders", new { area = "" }, null)</li>
                                 <li class="divider"></li>
-                                <li>@Html.ActionLink("Repairs", "Index", "Repairs")</li>
+                                <li>@Html.ActionLink("Repairs", "Index", "Repairs", new { area = "" }, null)</li>
                                 <li class="divider"></li>
                             </ul>
                         </li>
@@ -40,7 +40,7 @@
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Admin Users", "Index", "Users", new { area = "Admin" }, null)</li>
                     }
 
                 </ul>

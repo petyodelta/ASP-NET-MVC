@@ -16,7 +16,7 @@
 
         public IQueryable<User> GetAll()
         {
-            return this.users.All();
+            return this.users.All().OrderBy(x => x.UserName);
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<OrdersSystem.Web.Areas.Admin.ViewModels.UserViewModel>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Users</h2>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Email).Titled("User Email").SetWidth(110).Sortable(true).Filterable(true);
+    columns.Add().Titled("Details").Encoded(false).Sanitized(false).SetWidth(30)
+        .RenderValueAs(x => Html.ActionLink("See Details", "Details", new { x.Id }, new { @class = "btn btn-primary" }));
+}).WithPaging(10)

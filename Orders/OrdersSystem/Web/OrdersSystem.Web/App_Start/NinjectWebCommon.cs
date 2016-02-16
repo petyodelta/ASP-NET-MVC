@@ -13,6 +13,9 @@ namespace OrdersSystem.Web.App_Start
     using Ninject.Web.Common;
     using Data.Repository;
     using Data;
+    using Microsoft.AspNet.Identity;
+    using Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -68,6 +71,8 @@ namespace OrdersSystem.Web.App_Start
             kernel.Bind(b => b.From("OrdersSystem.Services")
                               .SelectAllClasses()
                               .BindDefaultInterface());
+
+            kernel.Bind<IOrdersData>().To<OrdersData>().InRequestScope();
         }        
     }
 }
