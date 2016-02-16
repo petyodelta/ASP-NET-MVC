@@ -1,10 +1,10 @@
 ﻿namespace OrdersSystem.Web.Areas.Admin.Controllers
 {
     using System.Linq;
-    using Infrastructure.Mapping;
-    using Ninject;
     using Services.Contracts;
     using System.Web.Mvc;
+    using Infrastructure.Mapping;
+    using Ninject;
     using ViewModels;
     using Web.Controllers;
 
@@ -28,13 +28,24 @@
             var user = this.UsersServices.GetById(id);
             var viewModel = this.Mapper.Map<UserEditModel>(user);
 
-            //viewModel.Roles = this.RolesServices.All()
-            //    .Select(x => new SelectListItem()
-            //    {
-            //        Text = x.Name,
-            //        Value = x.Id.ToString()
-            //    })
-            //    .ToList();
+            var userRoles = user.Roles.Select(r => r.RoleId);
+            var userMissingRolesSelectListItems = this.RolesServices.All()
+                .Where(r => !userRoles.Contains(r.Id))
+                .Select(r => new SelectListItem
+                {
+                    Text = r.Name,
+                    Value = r.Id
+                }).ToList();
+
+            var userRolesSelectListItems = user.Roles.Select(r => new SelectListItem
+            {
+                Text = this.RolesServices.GetRoleNameById(r.RoleId),
+                Value = r.RoleId
+            })
+            .ToList();
+
+            ViewBag.RolesMissing = userMissingRolesSelectListItems;
+            ViewBag.RolesAvailable = userRolesSelectListItems;
 
             return this.View(viewModel);
         }
@@ -51,6 +62,37 @@
             }
 
             return this.View("Edit", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRoleToUser(string roleId, string userId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.RolesServices.AddRoleToUser(userId, roleId);
+                TempData["Success"] = "Role added to user";
+
+                return RedirectToAction("Index");
+                
+            }
+
+            return this.View("Edit", userId);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveUserRole(string roleId, string userId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.RolesServices.RemoveUserRole(userId, roleId);
+                TempData["Success"] = "Role removed from user";
+
+                return RedirectToAction("Index");
+            }
+
+            return this.View("Edit", userId);
         }
     }
 }

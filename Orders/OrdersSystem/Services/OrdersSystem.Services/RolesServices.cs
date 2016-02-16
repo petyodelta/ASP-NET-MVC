@@ -5,6 +5,7 @@
     using OrdersSystem.Services.Contracts;
     using Microsoft.AspNet.Identity;
     using Data;
+    using System.Collections.Generic;
 
     public class RolesServices : IRolesServices
     {
@@ -37,6 +38,11 @@
         {
             var roleName = this.GetRoleNameById(roleId);
             this.data.UserManager.RemoveFromRole(userId, roleName);
+        }
+
+        public ICollection<IdentityUserRole> GetUserRoles(string id)
+        {
+            return this.data.Users.GetById(id).Roles;
         }
     }
 }

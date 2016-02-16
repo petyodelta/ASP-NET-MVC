@@ -1,6 +1,7 @@
 ﻿namespace OrdersSystem.Services.Contracts
 {
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
     using System.Linq;
 
     public interface IRolesServices
@@ -12,5 +13,7 @@
         void RemoveUserRole(string userId, string roleId);
 
         string GetRoleNameById(string roleId);
+
+        ICollection<IdentityUserRole> GetUserRoles(string id);
     }
 }

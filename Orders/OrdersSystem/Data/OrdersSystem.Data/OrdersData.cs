@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OrdersSystem.Models;
+using OrdersSystem.Data.Repository;
 
 namespace OrdersSystem.Data
 {
@@ -22,6 +23,14 @@ namespace OrdersSystem.Data
         public OrdersData(OrdersDbContext context)
         {
             this.context = context;
+        }
+
+        public IRepository<User> Users
+        {
+            get
+            {
+                return this.GetRepository<User>();
+            }
         }
 
         public RoleManager<IdentityRole> RolesManager
@@ -50,6 +59,18 @@ namespace OrdersSystem.Data
             {
                 this.context.Dispose();
             }
+        }
+
+        private IRepository<T> GetRepository<T>() where T : class
+        {
+            if (!this.repositories.ContainsKey(typeof(T)))
+            {
+                var type = typeof(GenericRepository<T>);
+
+                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+            }
+
+            return (IRepository<T>)this.repositories[typeof(T)];
         }
     }
 }
