@@ -6,5 +6,9 @@
     public interface IUsersServices
     {
         IQueryable<User> GetAll();
+
+        User GetById(string id);
+
+        User Update(string id, string email);
     }
 }

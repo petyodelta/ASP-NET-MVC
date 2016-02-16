@@ -4,6 +4,7 @@
     using OrdersSystem.Models;
     using OrdersSystem.Services.Contracts;
     using Data.Repository;
+    using System;
 
     public class UsersServices : IUsersServices
     {
@@ -17,6 +18,21 @@
         public IQueryable<User> GetAll()
         {
             return this.users.All().OrderBy(x => x.UserName);
+        }
+
+        public User GetById(string id)
+        {
+            return this.users.GetById(id);
+        }
+
+        public User Update(string id, string email)
+        {
+            var user = this.users.GetById(id);
+            
+            user.Email = email;
+
+            this.users.SaveChanges();
+            return user;
         }
     }
 }
