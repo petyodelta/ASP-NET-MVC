@@ -30,6 +30,7 @@
             var user = this.users.GetById(id);
             
             user.Email = email;
+            user.UserName = email;
 
             this.users.SaveChanges();
             return user;
