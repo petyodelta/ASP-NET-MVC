@@ -12,7 +12,10 @@
     </div>
 }
 
-@Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
+@if (User.IsInRole("Boss"))
+{
+    @Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
+}
 
 @Html.Grid(Model).Columns(columns =>
 {

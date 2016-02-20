@@ -11,7 +11,12 @@
         <strong>@TempData["Success"]</strong>
     </div>
 }
-@Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+
+@if (User.IsInRole("Boss"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
+
 <div>
     <p>
         <strong>Customer: </strong>@Model.Customer.Name

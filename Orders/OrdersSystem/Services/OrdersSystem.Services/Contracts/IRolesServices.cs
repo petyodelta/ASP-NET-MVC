@@ -15,5 +15,7 @@
         string GetRoleNameById(string roleId);
 
         ICollection<IdentityUserRole> GetUserRoles(string id);
+
+        string GetRoleId(string roleName);
     }
 }

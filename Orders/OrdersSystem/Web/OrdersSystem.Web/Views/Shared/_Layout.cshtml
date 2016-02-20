@@ -21,8 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (User.IsInRole("Worker") || User.IsInRole("Admin"))
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    @if (User.IsInRole("Worker") || User.IsInRole("Admin") || User.IsInRole("Boss"))
                     {
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Orders<span class="caret"></span></a>

@@ -16,7 +16,6 @@
             this.data = data;
         }
 
-
         public IQueryable<IdentityRole> All()
         {
             return this.data.RolesManager.Roles;
@@ -43,6 +42,12 @@
         public ICollection<IdentityUserRole> GetUserRoles(string id)
         {
             return this.data.Users.GetById(id).Roles;
+        }
+
+        public string GetRoleId(string roleName)
+        {
+            var role = this.All().Where(x => x.Name == roleName).FirstOrDefault();
+            return role.Id;
         }
     }
 }

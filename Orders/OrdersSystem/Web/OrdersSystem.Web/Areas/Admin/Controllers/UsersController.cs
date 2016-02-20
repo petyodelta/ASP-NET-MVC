@@ -7,7 +7,9 @@
     using Ninject;
     using ViewModels;
     using Web.Controllers;
+    using Common;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersController : BaseController
     {
         [Inject]

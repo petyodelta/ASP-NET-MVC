@@ -8,8 +8,8 @@
     using Models;
     using Ninject;
     using Infrastructure.Mapping;
-    using ViewModels.Repairs;    
-
+    using ViewModels.Repairs;
+    using Common;
     public class RepairsController : BaseController
     {
         [Inject]
@@ -24,6 +24,7 @@
         [Inject]
         public IUsersServices UsersServices { get; set; }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Index()
         {
             var inOrders = InOrdersServices
@@ -34,6 +35,8 @@
             return View(inOrders);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var repair = this.InOrdersServices.GetById(id);
@@ -42,6 +45,8 @@
             return View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Create()
         {
             var newRepair = new RepairInputModel();
@@ -74,6 +79,7 @@
             return this.View(newRepair);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(RepairInputModel model)

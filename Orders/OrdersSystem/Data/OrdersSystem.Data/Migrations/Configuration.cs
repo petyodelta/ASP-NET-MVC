@@ -62,6 +62,16 @@ namespace OrdersSystem.Data.Migrations
                 userManager.Create(worker, "123456");
                 userManager.AddToRole(worker.Id, "Worker");
 
+                var boss = new User()
+                {
+                    Email = "misho@misho.com",
+                    UserName = "misho@misho.com"
+                };
+
+                var bossRole = roleManager.Create(new IdentityRole("Boss"));
+                userManager.Create(boss, "123456");
+                userManager.AddToRole(boss.Id, "Boss");
+
                 context.SaveChanges();
             }
         }

@@ -9,6 +9,7 @@
     using System;
     using Models;
     using Microsoft.AspNet.Identity;
+    using Common;
     public class OutOrdersController : BaseController
     {
         [Inject]
@@ -20,6 +21,7 @@
         [Inject]
         public ISuppliersServices SuppliersServices { get; set; }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Index()
         {
             var outOrders = this.OutOrdersServices
@@ -29,6 +31,8 @@
             return View(outOrders);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
@@ -37,6 +41,8 @@
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Create()
         {
             var newOrder = new OutOrderInputModel();
@@ -53,6 +59,7 @@
             return this.View(newOrder);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(OutOrderInputModel model)
@@ -71,6 +78,8 @@
             return this.View("Create", model);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
@@ -96,6 +105,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(OutOrderEditViewModel model)

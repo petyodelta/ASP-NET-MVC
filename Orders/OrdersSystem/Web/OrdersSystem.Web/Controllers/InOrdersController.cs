@@ -11,6 +11,7 @@
     using Models;
     using System;
     using Microsoft.AspNet.Identity;
+    using Common;
 
     public class InOrdersController : BaseController
     {
@@ -26,6 +27,10 @@
         [Inject]
         public IUsersServices UsersServices { get; set; }
 
+        [Inject]
+        public IRolesServices RolesServices { get; set; }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Index()
         {
             var inOrders = InOrdersServices
@@ -36,6 +41,7 @@
             return View(inOrders);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         public ActionResult Details(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
@@ -44,6 +50,8 @@
             return View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Create()
         {
             var newOrder = new InOrderInputModel();
@@ -63,8 +71,12 @@
                     Value = d.Id.ToString()
                 })
                 .ToList();
+
+            var workerRoleId = this.RolesServices.GetRoleId("Worker");
+
             newOrder.Workers = this.UsersServices
                 .GetAll()
+                .Where( w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,
@@ -75,6 +87,7 @@
             return this.View(newOrder);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(InOrderInputModel model)
@@ -94,6 +107,8 @@
             return this.View("Create", model);            
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
@@ -127,6 +142,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(InOrderEditViewModel model)
