@@ -1,9 +1,10 @@
-﻿@model OrdersSystem.Web.ViewModels.OutOrders.OutOrderEditViewModel
+﻿@model OrdersSystem.Web.ViewModels.Repairs.RepairEditViewModel
+
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Outgoing Order</h2>
+<h2>Edit Repair Order</h2>
 <hr />
 @using (Html.BeginForm())
 {
@@ -17,8 +18,15 @@
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
         <br />
-        @Html.LabelFor(m => m.SupplierId)
-        @Html.DropDownListFor(m => m.SupplierId, Model.Suppliers, new { @class = "form-control" })
+        @Html.LabelFor(m => m.CustomerId)
+        @Html.DropDownListFor(m => m.CustomerId, Model.Customers, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.DeviceId)
+        @Html.DropDownListFor(m => m.DeviceId, Model.Devices, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.DeviceCount)
+        @Html.TextBoxFor(m => m.DeviceCount, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.DeviceCount, "", new { @class = "text-danger" })
         <br />
         @Html.LabelFor(m => m.EndDate)
         <br />
@@ -49,8 +57,4 @@
         });
     </script>
 }
-
-
-
-
 

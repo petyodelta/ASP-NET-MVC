@@ -92,11 +92,46 @@
                 var newRepairOrder = this.Mapper.Map<InOrder>(model);
                 this.InOrdersServices.Create(newRepairOrder);
 
-                TempData["Success"] = "Repair order created";
+                TempData["Success"] = GlobalConstants.RepairOrderCreateNotify;
                 return this.RedirectToAction("Index");
             }
 
-            return this.View("Create", model);
+            return this.View(model);
+        }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var repairOrder = this.InOrdersServices.GetById(id);
+            var viewModel = this.Mapper.Map<RepairEditViewModel>(repairOrder);
+
+            viewModel.Customers = this.CustomersSurvices
+                .GetAll()
+                .Select(c => new SelectListItem()
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                })
+                .ToList();
+            viewModel.Devices = this.DevicesServices
+                .GetAll()
+                .Select(d => new SelectListItem()
+                {
+                    Text = d.Name,
+                    Value = d.Id.ToString()
+                })
+                .ToList();
+            viewModel.Workers = this.UsersServices
+                .GetAll()
+                .Select(w => new SelectListItem()
+                {
+                    Text = w.UserName,
+                    Value = w.Id.ToString()
+                })
+                .ToList();
+
+            return this.View(viewModel);
         }
     }
 }

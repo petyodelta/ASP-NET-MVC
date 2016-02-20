@@ -265,6 +265,7 @@
     <Compile Include="ViewModels\OutOrders\OutOrderEditViewModel.cs" />
     <Compile Include="ViewModels\OutOrders\OutOrderInputModel.cs" />
     <Compile Include="ViewModels\OutOrders\OutOrderViewModel.cs" />
+    <Compile Include="ViewModels\Repairs\RepairEditViewModel.cs" />
     <Compile Include="ViewModels\Repairs\RepairInputModel.cs" />
     <Compile Include="ViewModels\Repairs\RepairsViewModel.cs" />
   </ItemGroup>
@@ -464,6 +465,7 @@
     <Content Include="Views\OutOrders\Edit.cshtml" />
     <Content Include="Views\Devices\Index.cshtml" />
     <Content Include="Views\Shared\_AllDevicesPartial.cshtml" />
+    <Content Include="Views\Repairs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />

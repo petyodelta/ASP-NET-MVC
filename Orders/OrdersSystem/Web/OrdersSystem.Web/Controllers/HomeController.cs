@@ -23,6 +23,7 @@
         {
             var inOrders = this.InOrdersServices
                 .GetAll()
+                .Where(x => x.IsRepair == false)
                 .OrderByDescending(x => x.EndDate)
                 .Take(6)
                 .To<InOrderViewModel>()

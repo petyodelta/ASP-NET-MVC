@@ -1,15 +1,17 @@
 ﻿namespace OrdersSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
-    using OrdersSystem.Web.Infrastructure.Mapping;
-    using Ninject;
-    using Services.Contracts;
-    using ViewModels.OutOrders;
-    using System;
+
+    using Common;
     using Models;
     using Microsoft.AspNet.Identity;
-    using Common;
+    using Ninject;
+    using OrdersSystem.Web.Infrastructure.Mapping;
+    using Services.Contracts;
+    using ViewModels.OutOrders;
+
     public class OutOrdersController : BaseController
     {
         [Inject]
@@ -71,11 +73,11 @@
                 var newOutOrder = this.Mapper.Map<OutOrder>(model);
                 this.OutOrdersServices.Create(newOutOrder);
 
-                TempData["Success"] = "Supply order created";
+                TempData["Success"] = GlobalConstants.OutOrderCreateNotify;
                 return this.RedirectToAction("Index");
             }
 
-            return this.View("Create", model);
+            return this.View(model);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
@@ -93,7 +95,7 @@
                     Value = c.Id.ToString()
                 })
                 .ToList();
-            viewModel.Authors = this.UsersServices
+            viewModel.Workers = this.UsersServices
                 .GetAll()
                 .Select(w => new SelectListItem()
                 {
@@ -115,11 +117,11 @@
                 var outOrder = this.Mapper.Map<OutOrder>(model);
                 this.OutOrdersServices.Update(model.Id, outOrder);
 
-                TempData["Success"] = "Outgoing order edited";
+                TempData["Success"] = GlobalConstants.OutOrderUpdateNotify;
                 return this.RedirectToAction("Details", new { id = model.Id });
             }
 
-            return this.View("Edit", model);
+            return this.View(model);
         }
     }
 }

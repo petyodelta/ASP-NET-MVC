@@ -1,23 +1,23 @@
-﻿namespace OrdersSystem.Web.ViewModels.InOrders
+﻿namespace OrdersSystem.Web.ViewModels.Repairs
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
-    using Infrastructure.Mapping;
-    using Models;
-    using System.ComponentModel.DataAnnotations;
+    using OrdersSystem.Models;
+    using OrdersSystem.Web.Infrastructure.Mapping;
     using Common;
-    public class InOrderInputModel : IMapTo<InOrder>
+    public class RepairEditViewModel : IMapFrom<InOrder>, IMapTo<InOrder>
     {
+        public int Id { get; set; }
+
         [Required]
         [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
         [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
         public string Description { get; set; }
-
-        public string AuthorId { get; set; }
-
-        [Display(Name = ValidationConstants.WorkerDisplayName)]
+        
+        [Display(Name = "Worker Name")]
         public string WorkerId { get; set; }
 
         [Display(Name = ValidationConstants.DiviceDisplayName)]
@@ -29,22 +29,16 @@
 
         [Display(Name = ValidationConstants.CustomerDisplayName)]
         public int CustomerId { get; set; }
-        
+
         [Display(Name = ValidationConstants.EndDateDisplayName)]
         public DateTime EndDate { get; set; }
-
-        public DateTime StartDate { get; set; }
-
+        
         public OrderStatus Status { get; set; }
-
-        public bool IsRepair { get; set; }
 
         public ICollection<SelectListItem> Devices { get; set; }
 
-        public ICollection<SelectListItem> Authors { get; set; }
-
         public ICollection<SelectListItem> Workers { get; set; }
-        
+
         public ICollection<SelectListItem> Customers { get; set; }
     }
 }

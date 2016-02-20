@@ -1,17 +1,16 @@
 ﻿namespace OrdersSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
+    using Common;
+    using Models;    
+    using Microsoft.AspNet.Identity;
+    using Ninject;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
     using OrdersSystem.Web.ViewModels.InOrders;
-
-    using Ninject;
-    using Models;
-    using System;
-    using Microsoft.AspNet.Identity;
-    using Common;
 
     public class InOrdersController : BaseController
     {
@@ -72,7 +71,7 @@
                 })
                 .ToList();
 
-            var workerRoleId = this.RolesServices.GetRoleId("Worker");
+            var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
 
             newOrder.Workers = this.UsersServices
                 .GetAll()
@@ -100,11 +99,11 @@
                 var newInOrder = this.Mapper.Map<InOrder>(model);
                 this.InOrdersServices.Create(newInOrder);
 
-                TempData["Success"] = "Incoming order created";
+                TempData["Success"] = GlobalConstants.InOrderCreateNotify;
                 return this.RedirectToAction("Index");
             }
 
-            return this.View("Create", model);            
+            return this.View(model);            
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
@@ -151,11 +150,11 @@
             {
                 var inOrder = this.Mapper.Map<InOrder>(model);
                 this.InOrdersServices.Update(model.Id, inOrder);
-                TempData["Success"] = "Incoming order updated";
+                TempData["Success"] = GlobalConstants.InOrderUpdateNotify;
                 return this.RedirectToAction("Details", new { id = model.Id });
             }
 
-            return this.View("Edit", model);           
+            return this.View(model);           
         }
     }
 }
