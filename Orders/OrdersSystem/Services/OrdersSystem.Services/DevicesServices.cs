@@ -37,5 +37,11 @@
 
             return deviceToUpdate;
         }
+
+        public void Delete(int id)
+        {
+            this.devices.Delete(id);
+            this.devices.SaveChanges();
+        }
     }
 }

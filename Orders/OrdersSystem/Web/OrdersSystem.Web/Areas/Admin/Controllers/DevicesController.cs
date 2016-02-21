@@ -103,5 +103,13 @@
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            this.DevicesServices.Delete(id);
+            TempData["Success"] = GlobalConstants.DeviceDeletedNotify;
+            return this.Redirect("/Admin/Devices/Index");
+        }
     }
 }
