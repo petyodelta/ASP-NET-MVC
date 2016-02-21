@@ -4,6 +4,7 @@
     using Data.Repository;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Models;
+    using System;
 
     public class DevicesServices : IDevicesServices
     {
@@ -25,6 +26,16 @@
             this.devices.SaveChanges();
 
             return device;
+        }
+
+        public Device Update(int id, Device device)
+        {
+            var deviceToUpdate = this.devices.All().FirstOrDefault(x => x.Id == id);
+            deviceToUpdate.Name = device.Name;
+            deviceToUpdate.CategoryId = device.CategoryId;
+            this.devices.SaveChanges();
+
+            return deviceToUpdate;
         }
     }
 }

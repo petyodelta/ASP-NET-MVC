@@ -8,5 +8,7 @@
         IQueryable<Device> GetAll();
 
         Device Add(Device device);
+
+        Device Update(int id, Device device);
     }
 }

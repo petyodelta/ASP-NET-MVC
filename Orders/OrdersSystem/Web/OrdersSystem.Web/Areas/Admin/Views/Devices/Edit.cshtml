@@ -1,11 +1,10 @@
-﻿@model OrdersSystem.Web.Areas.Admin.ViewModels.Devices.DeviceInputModel
-
+﻿@model OrdersSystem.Web.Areas.Admin.ViewModels.Devices.DeviceEditModel
 @{
-    ViewBag.Title = "Add Device";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Add New Device</h2>
-
+<h2>Edit Device</h2>
+<hr />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -21,10 +20,11 @@
         @Html.LabelFor(m => m.CategoryId)
         @Html.DropDownListFor(m => m.CategoryId, Model.Categories, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
-        <br />       
+        <br />        
     </div>
     <div class="form-group">
-        <input type="submit" value="Add" class="btn btn-primary" />
+        <input type="submit" value="Update" class="btn btn-success" />
         @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
     </div>
 }
+

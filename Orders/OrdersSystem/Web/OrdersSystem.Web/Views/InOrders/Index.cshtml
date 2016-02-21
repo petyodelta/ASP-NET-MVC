@@ -12,7 +12,7 @@
     </div>
 }
 
-@if (User.IsInRole("Boss"))
+@if (User.IsInRole("Boss") || User.IsInRole("Admin"))
 {
     @Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
 }

@@ -61,7 +61,44 @@
                 this.DevicesServices.Add(newDevice);
 
                 TempData["Success"] = GlobalConstants.DeviceAddNotify;
-                return this.Redirect("/Devices/Index");
+                return this.Redirect("/Admin/Devices/Index");
+            }
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var viewModel = this.DevicesServices
+                .GetAll()
+                .Where(x => x.Id == id)
+                .To<DeviceEditModel>()
+                .FirstOrDefault();
+
+            viewModel.Categories = this.CategoriesServices
+                .GetAll()
+                .Select(x => new SelectListItem()
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                })
+                .ToList();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(DeviceEditModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var device = this.Mapper.Map<Device>(model);
+                this.DevicesServices.Update(model.Id, device);
+                TempData["Success"] = GlobalConstants.DeviceUpdateNotify;
+
+                return this.Redirect("/Admin/Devices/Index");
             }
 
             return this.View(model);

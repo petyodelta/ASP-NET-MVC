@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DevicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Devices\DeviceEditModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserEditModel.cs" />
@@ -334,6 +335,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Devices\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Devices\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
