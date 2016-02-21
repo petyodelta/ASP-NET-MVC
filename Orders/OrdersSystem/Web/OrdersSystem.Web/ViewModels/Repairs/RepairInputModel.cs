@@ -1,10 +1,11 @@
 ﻿namespace OrdersSystem.Web.ViewModels.Repairs
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
+    using Common;
     using OrdersSystem.Models;
     using OrdersSystem.Web.Infrastructure.Mapping;
     
@@ -17,15 +18,20 @@
 
         public string AuthorId { get; set; }
 
+        [Display(Name = ValidationConstants.WorkerDisplayName)]
         public string WorkerId { get; set; }
 
+        [Display(Name = ValidationConstants.DiviceDisplayName)]
         public int DeviceId { get; set; }
 
+        [Display(Name = ValidationConstants.DeviceCountDisplayName)]
         [Range(1, int.MaxValue, ErrorMessage = "Device count must be greater than 0")]
         public int DeviceCount { get; set; }
 
+        [Display(Name = ValidationConstants.CustomerDisplayName)]
         public int CustomerId { get; set; }
 
+        [Display(Name = ValidationConstants.EndDateDisplayName)]
         public DateTime EndDate { get; set; }
 
         public DateTime StartDate { get; set; }

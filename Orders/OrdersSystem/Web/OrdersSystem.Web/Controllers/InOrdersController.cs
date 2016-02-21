@@ -53,8 +53,8 @@
         [HttpGet]
         public ActionResult Create()
         {
-            var newOrder = new InOrderInputModel();
-            newOrder.Customers = this.CustomersSurvices
+            var viewModel = new InOrderInputModel();
+            viewModel.Customers = this.CustomersSurvices
                 .GetAll()
                 .Select(c => new SelectListItem()
                 {
@@ -62,7 +62,7 @@
                     Value = c.Id.ToString()
                 })
                 .ToList();
-            newOrder.Devices = this.DevicesServices
+            viewModel.Devices = this.DevicesServices
                 .GetAll()
                 .Select(d => new SelectListItem()
                 {
@@ -73,7 +73,7 @@
 
             var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
 
-            newOrder.Workers = this.UsersServices
+            viewModel.Workers = this.UsersServices
                 .GetAll()
                 .Where( w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
@@ -83,7 +83,7 @@
                 })
                 .ToList();            
            
-            return this.View(newOrder);
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
@@ -129,8 +129,12 @@
                     Value = d.Id.ToString()
                 })
                 .ToList();
+
+            var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
+
             viewModel.Workers = this.UsersServices
                 .GetAll()
+                .Where(w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,

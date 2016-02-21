@@ -24,6 +24,9 @@
         [Inject]
         public IUsersServices UsersServices { get; set; }
 
+        [Inject]
+        public IRolesServices RolesServices { get; set; }
+
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Index()
         {
@@ -49,9 +52,9 @@
         [HttpGet]
         public ActionResult Create()
         {
-            var newRepair = new RepairInputModel();
+            var viewModel = new RepairInputModel();
 
-            newRepair.Customers = this.CustomersSurvices
+            viewModel.Customers = this.CustomersSurvices
                 .GetAll()
                 .Select(c => new SelectListItem()
                 {
@@ -59,7 +62,7 @@
                     Value = c.Id.ToString()
                 })
                 .ToList();
-            newRepair.Devices = this.DevicesServices
+            viewModel.Devices = this.DevicesServices
                 .GetAll()
                 .Select(d => new SelectListItem()
                 {
@@ -67,8 +70,12 @@
                     Value = d.Id.ToString()
                 })
                 .ToList();
-            newRepair.Workers = this.UsersServices
+
+            var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
+
+            viewModel.Workers = this.UsersServices
                 .GetAll()
+                .Where(w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,
@@ -76,7 +83,7 @@
                 })
                 .ToList();
 
-            return this.View(newRepair);
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
@@ -122,8 +129,12 @@
                     Value = d.Id.ToString()
                 })
                 .ToList();
+
+            var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
+
             viewModel.Workers = this.UsersServices
                 .GetAll()
+                .Where(w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,

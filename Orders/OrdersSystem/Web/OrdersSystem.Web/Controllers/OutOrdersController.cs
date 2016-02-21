@@ -23,6 +23,9 @@
         [Inject]
         public ISuppliersServices SuppliersServices { get; set; }
 
+        [Inject]
+        public IRolesServices RolesServices { get; set; }
+
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Index()
         {
@@ -95,8 +98,12 @@
                     Value = c.Id.ToString()
                 })
                 .ToList();
+
+            var workerRoleId = this.RolesServices.GetRoleId(GlobalConstants.WorkerRoleName);
+
             viewModel.Workers = this.UsersServices
                 .GetAll()
+                .Where(w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,
