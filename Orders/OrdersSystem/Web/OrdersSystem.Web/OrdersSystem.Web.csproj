@@ -219,8 +219,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DevicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceEditModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceViewModel.cs" />
@@ -336,6 +338,7 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Devices\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Devices\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />

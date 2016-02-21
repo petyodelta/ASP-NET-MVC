@@ -6,10 +6,11 @@
     using Common;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
+    using Models;
     using Ninject;
     using Web.Controllers;
     using ViewModels.Devices;
-    using Models;
+    
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class DevicesController : BaseController
     {

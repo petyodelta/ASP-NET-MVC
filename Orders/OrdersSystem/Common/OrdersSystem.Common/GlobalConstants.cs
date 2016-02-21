@@ -17,5 +17,6 @@
 
         public const string DeviceAddNotify = "Device added";
         public const string DeviceUpdateNotify = "Device updated";
+        public const string DeviceDeletedNotify = "Device deleted";
     }
 }
