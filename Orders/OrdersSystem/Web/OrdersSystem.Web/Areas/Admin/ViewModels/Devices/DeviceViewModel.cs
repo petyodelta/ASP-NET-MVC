@@ -1,4 +1,4 @@
-﻿namespace OrdersSystem.Web.ViewModels.Devices
+﻿namespace OrdersSystem.Web.Areas.Admin.ViewModels.Devices
 {
     using Infrastructure.Mapping;
     using Models;

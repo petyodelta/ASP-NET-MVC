@@ -219,12 +219,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DecicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
-    <Compile Include="Areas\Admin\ViewModels\UserEditModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\UserViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Devices\DeviceViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\UserEditModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DevicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InOrdersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -250,7 +251,6 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Devices\DeviceViewModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderEditViewModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderInputModel.cs" />
     <Compile Include="ViewModels\InOrders\InOrderViewModel.cs" />
@@ -468,6 +468,7 @@
     <Content Include="Views\Repairs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Decices\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />

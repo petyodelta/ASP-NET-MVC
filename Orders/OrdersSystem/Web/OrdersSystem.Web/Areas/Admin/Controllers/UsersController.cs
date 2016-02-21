@@ -5,7 +5,7 @@
     using System.Web.Mvc;
     using Infrastructure.Mapping;
     using Ninject;
-    using ViewModels;
+    using ViewModels.Users;
     using Web.Controllers;
     using Common;
 

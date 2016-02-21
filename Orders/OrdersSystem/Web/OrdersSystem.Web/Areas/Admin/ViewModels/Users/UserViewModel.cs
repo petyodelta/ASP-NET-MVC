@@ -1,4 +1,4 @@
-﻿namespace OrdersSystem.Web.Areas.Admin.ViewModels
+﻿namespace OrdersSystem.Web.Areas.Admin.ViewModels.Users
 {
     using Models;
     using Infrastructure.Mapping;

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OrdersSystem.Web.Areas.Admin.ViewModels
+namespace OrdersSystem.Web.Areas.Admin.ViewModels.Users
 {
     public class UserEditModel : IMapFrom<User>, IMapTo<User>
     {
