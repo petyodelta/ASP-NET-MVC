@@ -18,5 +18,9 @@
         public const string DeviceAddNotify = "Device added";
         public const string DeviceUpdateNotify = "Device updated";
         public const string DeviceDeletedNotify = "Device deleted";
+
+        public const string CategoryUpdateNotify = "Category updated";
+        public const string CategoryAddNotify = "Category added";
+        public const string CategoryExistsNotify = "Category already exists";
     }
 }

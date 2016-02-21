@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<OrdersSystem.Web.Areas.Admin.ViewModels.Categories.CategoryViewModel>
+
+@using GridMvc.Html
 @{
     ViewBag.Title = "Index";
 }
@@ -11,10 +13,14 @@
         <strong>@TempData["Success"]</strong>
     </div>
 }
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+    <strong>@TempData["Warning"]</strong>
+    </div>
+}
 
-@using GridMvc.Html
-
-@Html.ActionLink("Add New Device", "Add", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Add New Category", "Add", null, new { @class = "btn btn-primary" })
 <br />
 <br />
 @Html.Grid(Model).Columns(columns =>

@@ -1,9 +1,9 @@
-﻿@model OrdersSystem.Web.Areas.Admin.ViewModels.Devices.DeviceEditModel
+﻿@model OrdersSystem.Web.Areas.Admin.ViewModels.Categories.CategoryEditModel
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Device</h2>
+<h2>Edit Category</h2>
 <hr />
 @using (Html.BeginForm())
 {
@@ -16,10 +16,6 @@
         <br />
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-        <br />
-        @Html.LabelFor(m => m.CategoryId)
-        @Html.DropDownListFor(m => m.CategoryId, Model.Categories, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-success" />
