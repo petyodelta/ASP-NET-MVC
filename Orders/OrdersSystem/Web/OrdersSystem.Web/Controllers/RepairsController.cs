@@ -4,12 +4,14 @@
     using System.Linq;
     using Services.Contracts;
     using System.Web.Mvc;
+
+    using Common;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Models;
     using Ninject;
-    using Infrastructure.Mapping;
     using ViewModels.Repairs;
-    using Common;
+
     public class RepairsController : BaseController
     {
         [Inject]
