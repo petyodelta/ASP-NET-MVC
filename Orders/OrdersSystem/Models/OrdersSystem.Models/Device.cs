@@ -20,6 +20,7 @@
         [MaxLength(150, ErrorMessage = "Device name must be between 3 and 150 symbols")]
         public string Name { get; set; }
 
+        [Required]
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]

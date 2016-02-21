@@ -219,8 +219,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\DecicesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DevicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Devices\DeviceInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserEditModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserViewModel.cs" />
@@ -332,6 +333,7 @@
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Devices\Add.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -463,12 +465,11 @@
     <Content Include="Views\Repairs\Details.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\OutOrders\Edit.cshtml" />
-    <Content Include="Views\Devices\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Devices\Index.cshtml" />
     <Content Include="Views\Shared\_AllDevicesPartial.cshtml" />
     <Content Include="Views\Repairs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Decices\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />

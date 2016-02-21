@@ -14,5 +14,7 @@
 
         public const string RepairOrderCreateNotify = "Repair order created";
         public const string RepairOrderUpdateNotify = "Repair order updated";
+
+        public const string DeviceAddNotify = "Device added!";
     }
 }

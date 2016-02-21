@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Devices</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-dismissible alert-success notification col-md-3 pull-right">
+        <strong>@TempData["Success"]</strong>
+    </div>
+}
+
+@Html.Action("CacheDevices")
+

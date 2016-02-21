@@ -18,5 +18,13 @@
         {
             return this.devices.All().OrderBy(x => x.Name);
         }
+
+        public Device Add(Device device)
+        {
+            this.devices.Add(device);
+            this.devices.SaveChanges();
+
+            return device;
+        }
     }
 }

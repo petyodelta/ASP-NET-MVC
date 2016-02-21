@@ -6,5 +6,7 @@
     public interface IDevicesServices
     {
         IQueryable<Device> GetAll();
+
+        Device Add(Device device);
     }
 }
