@@ -12,11 +12,11 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(m => m.SupplierId)
-        @Html.DropDownListFor(m => m.SupplierId, Model.Suppliers, new { @class = "form-control" })
-        <br />
         @Html.EditorFor(m => m.Description)
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+        <br />
+        @Html.LabelFor(m => m.SupplierId)
+        @Html.DropDownListFor(m => m.SupplierId, Model.Suppliers, new { @class = "form-control" })
         <br />
         @Html.EditorFor(m => m.EndDate)
         <br />

@@ -5,14 +5,12 @@
 }
 
 <h2>All Outgoing Orders</h2>
-
+<hr />
 @Html.Partial("_TempDataPartial")
 
-@if (User.IsInRole("Boss") || User.IsInRole("Admin"))
-{
-    @Html.ActionLink("Create New Order", "Create", null, new { @class = "btn btn-primary" })
-}
+@Html.Partial("_CreateNewButtonPartial")
 
+<br />
 @Html.Grid(Model).Columns(columns =>
 {
     columns.Add(x => x.Supplier.Name).Titled("Supplier").SetWidth(110).Sortable(true).Filterable(true);
