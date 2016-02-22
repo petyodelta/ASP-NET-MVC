@@ -146,5 +146,22 @@
 
             return this.View(viewModel);
         }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(RepairEditViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var repair = this.Mapper.Map<InOrder>(model);
+                this.InOrdersServices.Update(model.Id, repair);
+
+                TempData["Success"] = GlobalConstants.RepairOrderUpdateNotify;
+                return this.RedirectToAction("Details", new { id = model.Id });
+            }
+
+            return this.View(model);
+        }
     }
 }
