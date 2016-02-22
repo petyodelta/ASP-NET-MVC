@@ -29,15 +29,6 @@
             return View(viewModel);
         }
 
-        //[OutputCache(Duration = 1 * 60)]
-        //[ChildActionOnly]
-        //public ActionResult CacheDevices()
-        //{
-           
-
-        //    return this.PartialView("_AllDevicesPartial", devices);
-        //}
-
         [HttpGet]
         public ActionResult Add()
         {
@@ -60,10 +51,21 @@
         {
             if (this.ModelState.IsValid)
             {
-                var newDevice = this.Mapper.Map<Device>(model);
-                this.DevicesServices.Add(newDevice);
+                var deviceName = this.DevicesServices
+                    .GetAll()
+                    .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
+                if (deviceName == null)
+                {
+                    var newDevice = this.Mapper.Map<Device>(model);
+                    this.DevicesServices.Add(newDevice);
 
-                TempData["Success"] = GlobalConstants.DeviceAddNotify;
+                    TempData["Success"] = GlobalConstants.DeviceAddNotify;                    
+                }
+                else
+                {
+                    TempData["Warning"] = GlobalConstants.DeviceExistsNotify;
+                }
+
                 return this.Redirect("/Admin/Devices/Index");
             }
 

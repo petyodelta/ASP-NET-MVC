@@ -17,6 +17,7 @@
 
         public const string DeviceAddNotify = "Device added";
         public const string DeviceUpdateNotify = "Device updated";
+        public const string DeviceExistsNotify = "Device already exists";
         public const string DeviceDeletedNotify = "Device deleted";
 
         public const string CategoryUpdateNotify = "Category updated";

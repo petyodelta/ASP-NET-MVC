@@ -34,10 +34,12 @@
         {
             if (this.ModelState.IsValid)
             {
-                var category = this.Mapper.Map<Category>(model);
-                var test = this.CategoriesServices.GetAll().FirstOrDefault(x => x.Name == model.Name);
-                if (test == null)
+                var categoryName = this.CategoriesServices
+                    .GetAll()
+                    .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
+                if (categoryName == null)
                 {
+                    var category = this.Mapper.Map<Category>(model);
                     this.CategoriesServices.Add(category);
                     TempData["Success"] = GlobalConstants.CategoryAddNotify;
                 }
