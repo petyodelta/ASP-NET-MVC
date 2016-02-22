@@ -475,10 +475,10 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\OutOrders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Devices\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_AllDevicesPartial.cshtml" />
     <Content Include="Views\Repairs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

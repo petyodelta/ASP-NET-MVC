@@ -22,19 +22,21 @@
 
         public ActionResult Index()
         {
-            return View();
+            var viewModel = this.DevicesServices
+               .GetAll()
+               .To<DeviceViewModel>();
+
+            return View(viewModel);
         }
 
-        [OutputCache(Duration = 1 * 60)]
-        [ChildActionOnly]
-        public ActionResult CacheDevices()
-        {
-            var devices = this.DevicesServices
-                .GetAll()
-                .To<DeviceViewModel>();
+        //[OutputCache(Duration = 1 * 60)]
+        //[ChildActionOnly]
+        //public ActionResult CacheDevices()
+        //{
+           
 
-            return this.PartialView("_AllDevicesPartial", devices);
-        }
+        //    return this.PartialView("_AllDevicesPartial", devices);
+        //}
 
         [HttpGet]
         public ActionResult Add()
