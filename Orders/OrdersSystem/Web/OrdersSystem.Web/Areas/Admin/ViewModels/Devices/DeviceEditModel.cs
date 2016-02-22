@@ -4,16 +4,17 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using Common;
     using Infrastructure.Mapping;
     using Models;
-    using Common;
+    
     public class DeviceEditModel : IMapFrom<Device>, IMapTo<Device>
     {
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
-        [MaxLength(150, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         public string Name { get; set; }
 
         [Required]

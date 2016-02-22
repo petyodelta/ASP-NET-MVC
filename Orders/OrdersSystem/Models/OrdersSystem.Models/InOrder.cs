@@ -1,11 +1,12 @@
 ﻿namespace OrdersSystem.Models
 {
+    using Common;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public class InOrder : Order
     {       
-        [Range(1, int.MaxValue, ErrorMessage = "Device count can not be less than 1")]
+        [Range(ValidationConstants.DeviceCountMinRange, int.MaxValue, ErrorMessage = ValidationConstants.DeviceCountErrorMessage)]
         public int DeviceCount { get; set; }
 
         public bool IsRepair { get; set; }

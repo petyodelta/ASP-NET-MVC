@@ -11,8 +11,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
-        [MaxLength(150, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
         public string Name { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace OrdersSystem.Models
 {
+    using Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -15,10 +16,10 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Customer name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Customer name must be between 3 and 150 symbols")]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.CustomerNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.CustomerNameErrorMessage)]
         public string Name { get; set; }
-
+        // TODO : Extract consts
         [Required]
         [MinLength(3, ErrorMessage = "Address must be between 3 and 500 symbols")]
         [MaxLength(500, ErrorMessage = "Address must be between 3 and 500 symbols")]

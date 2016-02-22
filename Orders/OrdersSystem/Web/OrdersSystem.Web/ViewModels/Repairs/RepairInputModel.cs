@@ -12,8 +12,8 @@
     public class RepairInputModel : IMapTo<InOrder>
     {
         [Required]
-        [MinLength(3, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
-        [MaxLength(2000, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MinLength(ValidationConstants.DescriptionMinLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MaxLength(ValidationConstants.DescriptionMinLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
         [UIHint("TextArea")]
         public string Description { get; set; }
 
@@ -27,7 +27,7 @@
 
         [Required]
         [Display(Name = ValidationConstants.DeviceCountDisplayName)]
-        [Range(1, int.MaxValue, ErrorMessage = ValidationConstants.DeviceCountErrorMessage)]
+        [Range(ValidationConstants.DeviceCountMinRange, int.MaxValue, ErrorMessage = ValidationConstants.DeviceCountErrorMessage)]
         public int DeviceCount { get; set; }
 
         [Display(Name = ValidationConstants.CustomerDisplayName)]

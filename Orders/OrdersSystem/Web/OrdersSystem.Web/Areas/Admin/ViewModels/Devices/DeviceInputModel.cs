@@ -10,8 +10,8 @@
     public class DeviceInputModel : IMapTo<Device>
     {
         [Required]
-        [MinLength(3, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
-        [MaxLength(150, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         public string Name { get; set; }
 
         [Required]

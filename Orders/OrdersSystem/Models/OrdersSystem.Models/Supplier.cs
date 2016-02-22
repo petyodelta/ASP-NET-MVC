@@ -1,5 +1,6 @@
 ﻿namespace OrdersSystem.Models
 {
+    using Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -14,8 +15,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Supplier name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Supplier name must be between 3 and 150 symbols")]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.SupplierNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.SupplierNameErrorMessage)]
         public string Name { get; set; }
 
         public virtual ICollection<OutOrder> OutOrders

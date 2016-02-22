@@ -12,8 +12,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
-        [MaxLength(2000, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MinLength(ValidationConstants.DescriptionMinLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MaxLength(ValidationConstants.DescriptionMaxLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
         [UIHint("TextArea")]
         public string Description { get; set; }
 

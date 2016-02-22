@@ -1,5 +1,6 @@
 ﻿namespace OrdersSystem.Models
 {
+    using Common;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -9,8 +10,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
-        [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
+        [MinLength(ValidationConstants.DescriptionMinLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MaxLength(ValidationConstants.DescriptionMaxLength, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
         public string Description { get; set; }
 
         public DateTime StartDate { get; set; }

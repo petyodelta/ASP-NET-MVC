@@ -1,5 +1,6 @@
 ﻿namespace OrdersSystem.Models
 {
+    using Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -16,8 +17,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Device name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Device name must be between 3 and 150 symbols")]
+        [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         public string Name { get; set; }
 
         [Required]
