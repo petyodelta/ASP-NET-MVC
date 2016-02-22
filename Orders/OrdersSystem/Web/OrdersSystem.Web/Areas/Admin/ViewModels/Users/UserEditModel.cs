@@ -16,7 +16,7 @@ namespace OrdersSystem.Web.Areas.Admin.ViewModels.Users
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        // [UIHint("String")]
+        [UIHint("String")]
         public string Email { get; set; }
 
         // public ICollection<SelectListItem> Roles { get; set; }

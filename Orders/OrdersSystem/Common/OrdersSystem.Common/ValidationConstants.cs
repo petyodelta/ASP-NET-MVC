@@ -14,5 +14,6 @@ namespace OrdersSystem.Common
         public const string EndDateDisplayName = "End Date";
         public const string SupplierDisplayName = "Supplier Name";
         public const string DeviceCountDisplayName = "Device Count";
+        public const string CategoryDisplayName = "Category";
     }
 }

@@ -6,7 +6,7 @@
 
     using Infrastructure.Mapping;
     using Models;
-    
+    using Common;
     public class DeviceInputModel : IMapTo<Device>
     {
         [Required]
@@ -15,7 +15,7 @@
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = ValidationConstants.CategoryDisplayName)]
         public int CategoryId { get; set; }
 
         public ICollection<SelectListItem> Categories { get; set; }

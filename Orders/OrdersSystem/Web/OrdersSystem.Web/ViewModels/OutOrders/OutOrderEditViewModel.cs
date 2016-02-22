@@ -14,6 +14,7 @@
         [Required]
         [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
         [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
+        [UIHint("TextArea")]
         public string Description { get; set; }
 
         [Display(Name = ValidationConstants.WorkerDisplayName)]

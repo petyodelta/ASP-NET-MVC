@@ -15,6 +15,7 @@
         [Required]
         [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
         [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
+        [UIHint("TextArea")]
         public string Description { get; set; }
 
         [Display(Name = ValidationConstants.WorkerDisplayName)]
@@ -23,6 +24,7 @@
         [Display(Name = ValidationConstants.DiviceDisplayName)]
         public int DeviceId { get; set; }
 
+        [Required]
         [Display(Name = ValidationConstants.DeviceCountDisplayName)]
         [Range(1, int.MaxValue, ErrorMessage = "Device count must be greater than 0")]
         public int DeviceCount { get; set; }

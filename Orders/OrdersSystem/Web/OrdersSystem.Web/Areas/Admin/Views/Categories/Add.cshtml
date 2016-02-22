@@ -13,9 +13,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Name, new { @class = "control-label" })
-        <br />
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.EditorFor(m => m.Name)
         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">

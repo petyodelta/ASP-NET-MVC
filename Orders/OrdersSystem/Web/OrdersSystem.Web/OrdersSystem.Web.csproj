@@ -483,6 +483,9 @@
     <Content Include="Views\OutOrders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Devices\Index.cshtml" />
     <Content Include="Views\Repairs\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />

@@ -12,9 +12,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Description, new { @class = "control-label" })
-        <br />
-        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.EditorFor(m => m.Description)
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
         <br />
         @Html.LabelFor(m => m.CustomerId)
@@ -23,13 +21,10 @@
         @Html.LabelFor(m => m.DeviceId)
         @Html.DropDownListFor(m => m.DeviceId, Model.Devices, new { @class = "form-control" })
         <br />
-        @Html.LabelFor(m => m.DeviceCount)
-        @Html.TextBoxFor(m => m.DeviceCount, new { @class = "form-control", type = "number" })
+        @Html.EditorFor(m => m.DeviceCount)
         @Html.ValidationMessageFor(m => m.DeviceCount, "", new { @class = "text-danger" })
         <br />
-        @Html.LabelFor(m => m.EndDate)
-        <br />
-        @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+        @Html.EditorFor(m => m.EndDate)
         <br />
         <br />
         @Html.LabelFor(m => m.WorkerId)

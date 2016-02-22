@@ -15,9 +15,7 @@
         @Html.LabelFor(m => m.SupplierId)
         @Html.DropDownListFor(m => m.SupplierId, Model.Suppliers, new { @class = "form-control" })
         <br />
-        @Html.LabelFor(m => m.Description, new { @class = "control-label" })
-        <br />
-        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.EditorFor(m => m.Description)
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
         <br />
         @Html.EditorFor(m => m.EndDate)
