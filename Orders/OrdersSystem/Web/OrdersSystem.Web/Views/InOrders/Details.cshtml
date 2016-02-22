@@ -3,7 +3,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Incoming Order Details</h2>
 <hr />
 @if (TempData["Success"] != null)
 {
@@ -12,35 +12,7 @@
     </div>
 }
 
-<div>
-    <p>
-        <strong>Customer: </strong>@Model.Customer.Name
-    </p>
-    <p>
-        <strong>Device: </strong>@Model.Device.Name
-    </p>
-    <p>
-        <strong>Device Count: </strong>@Model.DeviceCount
-    </p>
-    <p>
-        <strong>Description: </strong>@Model.Description
-    </p>
-    <p>
-        <strong>Status: </strong>@Model.Status
-    </p>
-    <p>
-        <strong>Ordered on: </strong>@Html.DisplayFor(m => m.StartDate)    
-    </p>
-    <p>
-        <strong>End Date: </strong>@Html.DisplayFor(m => m.EndDate)
-    </p>
-    <p>
-        <strong>Ordered By: </strong>@Model.Author.UserName
-    </p>
-    <p>
-        <strong>Person In Charge: </strong>@Model.Worker.UserName
-    </p>
-</div>
+@Html.DisplayForModel("InOrderViewModel")
 
 @if (User.IsInRole("Boss") || User.IsInRole("Admin"))
 {

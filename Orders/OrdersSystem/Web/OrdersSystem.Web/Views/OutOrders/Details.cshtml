@@ -12,26 +12,8 @@
     </div>
 }
 
-<div>
-    <p>
-        <strong>Customer: </strong>@Model.Supplier.Name
-    </p>
-    <p>
-        <strong>Description: </strong>@Model.Description
-    </p>
-    <p>
-        <strong>Status: </strong>@Model.Status
-    </p>
-    <p>
-        <strong>Ordered on: </strong>@Model.StartDate
-    </p>
-    <p>
-        <strong>End Date: </strong>@Model.EndDate
-    </p>
-    <p>
-        <strong>Ordered By: </strong>@Model.Author.UserName
-    </p>
-</div>
+@Html.DisplayForModel("OutOrderViewModel")
+
 @if (User.IsInRole("Boss") || User.IsInRole("Admin"))
 {
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
