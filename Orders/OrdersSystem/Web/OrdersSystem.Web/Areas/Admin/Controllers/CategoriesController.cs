@@ -73,9 +73,19 @@
         {
             if (this.ModelState.IsValid)
             {
-                var category = this.Mapper.Map<Category>(model);
-                this.CategoriesServices.Update(model.Id, category);
-                TempData["Success"] = GlobalConstants.CategoryUpdateNotify;
+                var categoryName = this.CategoriesServices
+                    .GetAll()
+                    .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
+                if (categoryName == null)
+                {
+                    var category = this.Mapper.Map<Category>(model);
+                    this.CategoriesServices.Update(model.Id, category);
+                    TempData["Success"] = GlobalConstants.CategoryUpdateNotify;
+                }
+                else
+                {
+                    TempData["Warning"] = GlobalConstants.CategoryExistsNotify;
+                }
 
                 return this.Redirect("/Admin/Categories/Index");
             }

@@ -229,6 +229,7 @@
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceEditModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Devices\DeviceViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Suppliers\SupplierEditModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Suppliers\SupplierInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Suppliers\SupplierViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserEditModel.cs" />
@@ -348,6 +349,7 @@
     <Content Include="Areas\Admin\Views\Categories\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Suppliers\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Suppliers\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Suppliers\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />

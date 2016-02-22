@@ -99,9 +99,19 @@
         {
             if (this.ModelState.IsValid)
             {
-                var device = this.Mapper.Map<Device>(model);
-                this.DevicesServices.Update(model.Id, device);
-                TempData["Success"] = GlobalConstants.DeviceUpdateNotify;
+                var deviceName = this.DevicesServices
+                    .GetAll()
+                    .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
+                if (deviceName == null)
+                {
+                    var device = this.Mapper.Map<Device>(model);
+                    this.DevicesServices.Update(model.Id, device);
+                    TempData["Success"] = GlobalConstants.DeviceUpdateNotify;
+                }
+                else
+                {
+                    TempData["Warning"] = GlobalConstants.DeviceExistsNotify;
+                }
 
                 return this.Redirect("/Admin/Devices/Index");
             }

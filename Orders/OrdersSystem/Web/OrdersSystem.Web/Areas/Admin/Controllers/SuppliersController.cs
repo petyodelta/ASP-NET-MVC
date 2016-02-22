@@ -57,5 +57,51 @@
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var viewModel = this.SuppliersServices
+                .GetAll()
+                .Where(x => x.Id == id)
+                .To<SupplierEditModel>()
+                .FirstOrDefault();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(SupplierEditModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var supplierName = this.SuppliersServices
+                    .GetAll()
+                    .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
+                if (supplierName == null)
+                {
+                    var supplier = this.Mapper.Map<Supplier>(model);
+                    this.SuppliersServices.Update(model.Id, supplier);
+                    TempData["Success"] = GlobalConstants.SupplierUpdatedNotify;
+                }
+                else
+                {
+                    TempData["Warning"] = GlobalConstants.SupplierExistsNotify;
+                }
+
+                return this.Redirect("/Admin/Suppliers/Index");
+            }
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            this.SuppliersServices.Delete(id);
+            TempData["Success"] = GlobalConstants.SupplierDeletedNotify;
+            return this.Redirect("/Admin/Suppliers/Index");
+        }
     }
 }
