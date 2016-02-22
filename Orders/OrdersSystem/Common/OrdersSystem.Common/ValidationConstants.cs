@@ -18,5 +18,7 @@ namespace OrdersSystem.Common
 
         public const string DescriptionErrorMessage = "Description name must be between 3 and 2000 symbols";
         public const string DeviceCountErrorMessage = "Device count must be greater than 0";
+        public const string CategoryNameErrorMessage = "Category name must be between 3 and 150 symbols";
+        public const string DeviceNameErrorMessage = "Device name must be between 3 and 150 symbols";
     }
 }

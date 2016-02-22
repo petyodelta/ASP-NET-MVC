@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using Common;
     using Infrastructure.Mapping;
     using Models;
     
@@ -10,8 +11,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Supplier name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Supplier name must be between 3 and 150 symbols")]
+        [MinLength(3, ErrorMessage = ValidationConstants.SupplierNameErrorMessage)]
+        [MaxLength(150, ErrorMessage = ValidationConstants.SupplierNameErrorMessage)]
         public string Name { get; set; }
     }
 }

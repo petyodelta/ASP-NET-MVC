@@ -10,8 +10,8 @@
     public class DeviceInputModel : IMapTo<Device>
     {
         [Required]
-        [MinLength(3, ErrorMessage = "Device name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Device name must be between 3 and 150 symbols")]
+        [MinLength(3, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
+        [MaxLength(150, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         public string Name { get; set; }
 
         [Required]

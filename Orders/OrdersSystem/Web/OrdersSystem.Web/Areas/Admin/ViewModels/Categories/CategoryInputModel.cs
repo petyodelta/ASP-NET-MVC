@@ -2,14 +2,15 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using Common;
     using Models;
     using Infrastructure.Mapping;
-
+    
     public class CategoryInputModel : IMapTo<Category>
     {
         [Required]
-        [MinLength(3, ErrorMessage = "Category name must be between 3 and 150 symbols")]
-        [MaxLength(150, ErrorMessage = "Category name must be between 3 and 150 symbols")]
+        [MinLength(3, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
+        [MaxLength(150, ErrorMessage = ValidationConstants.CategoryNameErrorMessage)]
         public string Name { get; set; }
     }
 }
