@@ -1,6 +1,6 @@
 ﻿@model OrdersSystem.Web.ViewModels.Repairs.RepairInputModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create New Repair Order";
 }
 
 <h2>Create New Repair Order</h2>
@@ -35,6 +35,7 @@
     </div>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success" />
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
     </div>
 }
 
