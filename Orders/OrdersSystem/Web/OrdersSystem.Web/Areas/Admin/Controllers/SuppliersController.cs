@@ -101,6 +101,7 @@
         {
             this.SuppliersServices.Delete(id);
             TempData["Success"] = GlobalConstants.SupplierDeletedNotify;
+
             return this.Redirect("/Admin/Suppliers/Index");
         }
     }

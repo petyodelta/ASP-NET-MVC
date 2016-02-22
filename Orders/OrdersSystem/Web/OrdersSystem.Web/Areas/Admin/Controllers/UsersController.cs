@@ -25,6 +25,7 @@
             return View(users);
         }
 
+        [HttpGet]
         public ActionResult Edit(string id)
         {
             var user = this.UsersServices.GetById(id);
@@ -95,6 +96,14 @@
             }
 
             return this.View("Edit", userId);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            this.UsersServices.Delete(id);
+
+            return this.Redirect("/Admin/Users/Index");
         }
     }
 }

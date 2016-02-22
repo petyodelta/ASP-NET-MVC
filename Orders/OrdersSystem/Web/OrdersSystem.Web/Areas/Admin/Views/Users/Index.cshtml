@@ -18,4 +18,7 @@
     columns.Add(x => x.Email).Titled("User Email").SetWidth(110).Sortable(true).Filterable(true);
     columns.Add().Titled("Details").Encoded(false).Sanitized(false).SetWidth(30)
         .RenderValueAs(x => Html.ActionLink("Edit", "Edit", new { x.Id }, new { @class = "btn btn-primary" }));
+    columns.Add().Titled("").Encoded(false).Sanitized(false).SetWidth(30)
+       .RenderValueAs(x => Html.ActionLink("Delete", "Delete", new { id = x.Id },
+           new { onclick = "return confirm('Do you really want to delete this user?')", @class = "btn btn-danger" }));
 }).WithPaging(10)

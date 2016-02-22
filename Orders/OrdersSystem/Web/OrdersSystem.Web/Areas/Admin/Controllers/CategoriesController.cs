@@ -98,6 +98,7 @@
         {
             this.CategoriesServices.Delete(id);
             TempData["Success"] = GlobalConstants.CategoryDeletedNotify;
+
             return this.Redirect("/Admin/Categories/Index");
         }
     }

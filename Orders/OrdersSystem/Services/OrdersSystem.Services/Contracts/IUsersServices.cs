@@ -10,5 +10,7 @@
         User GetById(string id);
 
         User Update(string id, string email);
+
+        void Delete(string id);
     }
 }

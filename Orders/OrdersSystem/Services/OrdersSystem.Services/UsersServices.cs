@@ -15,6 +15,12 @@
             this.users = users;
         }
 
+        public void Delete(string id)
+        {
+            this.users.Delete(id);
+            this.users.SaveChanges();
+        }
+
         public IQueryable<User> GetAll()
         {
             return this.users.All().OrderBy(x => x.UserName);

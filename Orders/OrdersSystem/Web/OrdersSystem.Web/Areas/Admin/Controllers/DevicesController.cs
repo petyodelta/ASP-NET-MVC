@@ -124,6 +124,7 @@
         {
             this.DevicesServices.Delete(id);
             TempData["Success"] = GlobalConstants.DeviceDeletedNotify;
+
             return this.Redirect("/Admin/Devices/Index");
         }
     }
