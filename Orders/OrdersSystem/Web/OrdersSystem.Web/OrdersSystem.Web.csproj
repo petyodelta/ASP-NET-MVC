@@ -490,6 +490,7 @@
     <Content Include="Views\Shared\DisplayTemplates\OutOrderViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RepairsViewModel.cshtml" />
     <Content Include="Views\Shared\_TempDataPartial.cshtml" />
+    <Content Include="Views\Shared\_EditButtonPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
