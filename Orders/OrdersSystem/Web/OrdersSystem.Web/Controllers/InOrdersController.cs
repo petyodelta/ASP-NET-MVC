@@ -45,8 +45,8 @@
         {
             var inOrder = this.InOrdersServices.GetById(id);
             var viewModel = this.Mapper.Map<InOrderViewModel>(inOrder);
-            
-            return View(viewModel);
+
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]

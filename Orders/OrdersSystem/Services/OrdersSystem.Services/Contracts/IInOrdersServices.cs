@@ -13,6 +13,8 @@
 
         InOrder Update(int id, InOrder outOrder);
 
+        InOrder UpdateStatus(int id, InOrder inOrder);
+
         void DeleteById(int id);
     }
 }

@@ -12,11 +12,6 @@
     </div>
 }
 
-@if (User.IsInRole("Boss"))
-{
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
-}
-
 <div>
     <p>
         <strong>Customer: </strong>@Model.Customer.Name
@@ -46,3 +41,11 @@
         <strong>Person In Charge: </strong>@Model.Worker.UserName
     </p>
 </div>
+
+@if (User.IsInRole("Boss") || User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
+
+
+

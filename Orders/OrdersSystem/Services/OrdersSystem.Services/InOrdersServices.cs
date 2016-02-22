@@ -53,5 +53,15 @@
 
             return inOrderToUpdate;
         }
+
+        public InOrder UpdateStatus(int id, InOrder inOrder)
+        {
+            var inOrderToUpdate = this.inOrders.GetById(id);
+            inOrderToUpdate.Status = inOrder.Status;
+
+            this.inOrders.SaveChanges();
+
+            return inOrderToUpdate;
+        }
     }
 }
