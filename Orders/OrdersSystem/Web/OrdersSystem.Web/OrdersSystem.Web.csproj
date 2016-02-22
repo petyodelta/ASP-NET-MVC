@@ -489,6 +489,7 @@
     <Content Include="Views\Shared\DisplayTemplates\InOrderViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\OutOrderViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RepairsViewModel.cshtml" />
+    <Content Include="Views\Shared\_TempDataPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
