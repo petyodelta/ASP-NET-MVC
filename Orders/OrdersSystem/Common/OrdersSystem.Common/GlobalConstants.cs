@@ -22,5 +22,6 @@
         public const string CategoryUpdateNotify = "Category updated";
         public const string CategoryAddNotify = "Category added";
         public const string CategoryExistsNotify = "Category already exists";
+        public const string CategoryDeletedNotify = "Category deleted";
     }
 }

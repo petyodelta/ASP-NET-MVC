@@ -26,6 +26,7 @@
         public void Delete(int id)
         {
             this.categories.Delete(id);
+            this.categories.SaveChanges();
         }
 
         public IQueryable<Category> GetAll()

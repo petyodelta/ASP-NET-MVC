@@ -23,18 +23,6 @@
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            var viewModel = this.CategoriesServices
-                .GetAll()
-                .Where(x => x.Id == id)
-                .To<CategoryEditModel>()
-                .FirstOrDefault();
-
-            return this.View(viewModel);
-        }
-
-        [HttpGet]
         public ActionResult Add()
         {
             return this.View();
@@ -64,6 +52,18 @@
             return this.View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var viewModel = this.CategoriesServices
+                .GetAll()
+                .Where(x => x.Id == id)
+                .To<CategoryEditModel>()
+                .FirstOrDefault();
+
+            return this.View(viewModel);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CategoryEditModel model)
@@ -78,6 +78,14 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            this.CategoriesServices.Delete(id);
+            TempData["Success"] = GlobalConstants.CategoryDeletedNotify;
+            return this.Redirect("/Admin/Categories/Index");
         }
     }
 }
