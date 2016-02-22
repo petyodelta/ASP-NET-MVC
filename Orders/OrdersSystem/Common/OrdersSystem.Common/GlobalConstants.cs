@@ -24,5 +24,8 @@
         public const string CategoryAddNotify = "Category added";
         public const string CategoryExistsNotify = "Category already exists";
         public const string CategoryDeletedNotify = "Category deleted";
+
+        public const string SupplierAddNotify = "Supplier added";
+        public const string SupplierExistsNotify = "Supplier already exists";
     }
 }
