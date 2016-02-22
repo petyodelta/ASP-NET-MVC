@@ -8,13 +8,14 @@
     using Infrastructure.Mapping;
     using Models;
     using Common;
+
     public class InOrderEditViewModel : IMapFrom<InOrder>, IMapTo<InOrder>
     {
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
-        [MaxLength(2000, ErrorMessage = "Description name must be between 3 and 2000 symbols")]
+        [MinLength(3, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
+        [MaxLength(2000, ErrorMessage = ValidationConstants.DescriptionErrorMessage)]
         [UIHint("TextArea")]
         public string Description { get; set; }
         
@@ -26,7 +27,7 @@
 
         [Required]
         [Display(Name = ValidationConstants.DeviceCountDisplayName)]
-        [Range(1, int.MaxValue, ErrorMessage = "Device count must be greater than 0")]
+        [Range(1, int.MaxValue, ErrorMessage = ValidationConstants.DeviceCountErrorMessage)]
         public int DeviceCount { get; set; }
 
         [Display(Name = ValidationConstants.CustomerDisplayName)]
