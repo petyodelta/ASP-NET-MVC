@@ -40,7 +40,7 @@
             return View(inOrders);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         public ActionResult Details(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
@@ -169,6 +169,16 @@
             var description = inOrder.Description;
 
             return this.Content(description);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateStatus(int id, InOrderViewModel model)
+        {
+            var inOrder = this.InOrdersServices.GetById(id);
+            inOrder.Status = model.Status;
+            this.InOrdersServices.UpdateStatus(id, inOrder);
+            var content = model.Status;
+            return this.Content(content.ToString());
         }
     }
 }

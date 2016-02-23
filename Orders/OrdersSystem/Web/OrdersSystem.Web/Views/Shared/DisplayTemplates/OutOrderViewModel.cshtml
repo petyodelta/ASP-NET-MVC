@@ -9,8 +9,10 @@
         <div id="description">
             @(Model.Description.Length > 10 ? Model.Description.Substring(0, 10) + "..." : Model.Description)
         </div>
-        <div>
-            @Ajax.ActionLink("See full description", "GetFullDescription", new { id = Model.Id },
+        @if (Model.Description.Length > 10)
+        {
+            <div>
+                @Ajax.ActionLink("See full description", "GetFullDescription", new { id = Model.Id },
                 new AjaxOptions
                 {
                     HttpMethod = "GET",
@@ -18,7 +20,8 @@
                     UpdateTargetId = "description",
                     OnSuccess = "hideButton"
                 }, new { id = "ajax-button" })
-        </div>
+            </div>
+        } 
     </p>
     <p>
         <strong>Status: </strong>@Model.Status

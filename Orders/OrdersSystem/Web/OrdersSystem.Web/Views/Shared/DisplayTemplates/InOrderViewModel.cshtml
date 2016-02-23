@@ -16,19 +16,22 @@
         <div id="description">
             @(Model.Description.Length > 10 ? Model.Description.Substring(0, 10) + "..." : Model.Description)
         </div>
-        <div>
-            @Ajax.ActionLink("See full description", "GetFullDescription", new { id = Model.Id },
+        @if (Model.Description.Length > 10)
+        {
+            <div>
+                @Ajax.ActionLink("See full description", "GetFullDescription", new { id = Model.Id },
                 new AjaxOptions
                 {
                     HttpMethod = "GET",
                     InsertionMode = InsertionMode.Replace,
                     UpdateTargetId = "description",
                     OnSuccess = "hideButton"
-                }, new {id = "ajax-button" })
-        </div>
+                }, new { id = "ajax-button" })
+            </div>
+        }        
     </p>
     <p>
-        <strong>Status: </strong>@Model.Status
+        <strong>Status: </strong><span id="status">@Model.Status</span>
     </p>
     <p>
         <strong>Ordered on: </strong>@Html.DisplayFor(m => m.StartDate)
