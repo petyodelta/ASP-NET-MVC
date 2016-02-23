@@ -1,9 +1,10 @@
 ﻿namespace OrdersSystem.Models
 {
-    using Common;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Common;
 
     public abstract class Order
     {

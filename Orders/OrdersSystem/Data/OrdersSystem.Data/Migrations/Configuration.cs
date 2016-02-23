@@ -58,9 +58,26 @@ namespace OrdersSystem.Data.Migrations
                     UserName = "pesho@pesho.com"
                 };
 
+                var worker2 = new User()
+                {
+                    Email = "georgi@georgi.com",
+                    UserName = "georgi@georgi.com"
+                };
+
+                var worker3 = new User()
+                {
+                    Email = "hristo@hristo.com",
+                    UserName = "hristo@hristo.com"
+                };
+
                 var workerRole = roleManager.Create(new IdentityRole("Worker"));
+
                 userManager.Create(worker, "123456");
                 userManager.AddToRole(worker.Id, "Worker");
+                userManager.Create(worker2, "123456");
+                userManager.AddToRole(worker2.Id, "Worker");
+                userManager.Create(worker3, "123456");
+                userManager.AddToRole(worker3.Id, "Worker");
 
                 var boss = new User()
                 {
@@ -68,9 +85,18 @@ namespace OrdersSystem.Data.Migrations
                     UserName = "misho@misho.com"
                 };
 
+                var boss2 = new User()
+                {
+                    Email = "evgeni@evgeni.com",
+                    UserName = "evgeni@evgeni.com"
+                };
+
                 var bossRole = roleManager.Create(new IdentityRole("Boss"));
+
                 userManager.Create(boss, "123456");
                 userManager.AddToRole(boss.Id, "Boss");
+                userManager.Create(boss2, "123456");
+                userManager.AddToRole(boss2.Id, "Boss");
 
                 context.SaveChanges();
             }
@@ -78,14 +104,14 @@ namespace OrdersSystem.Data.Migrations
 
         private void SeedCategories(OrdersDbContext context)
         {
-            string[] cats = new string[] { "Indicators", "Controllers", "Transmitters", "Gas Alarms" };
+            string[] categories = new string[] { "Indicators", "Controllers", "Transmitters", "Gas Alarms" };
             if (!context.Categories.Any())
             {
                 for (int i = 0; i < 4; i++)
                 {
                     var category = new Category()
                     {
-                        Name = cats[i]
+                        Name = categories[i]
                     };
 
                     context.Categories.Add(category);
@@ -142,8 +168,8 @@ namespace OrdersSystem.Data.Migrations
         {
             if (!context.Customers.Any())
             {
-                string[] customers = new string[] { "Delektra", "Enemona", "Tasi", "Sofiiska voda" };
-                for (int i = 0; i < 4; i++)
+                string[] customers = new string[] { "Delektra", "Enemona", "Tasi", "Sofiiska voda", "Bulgargas" };
+                for (int i = 0; i < 5; i++)
                 {
                     var customer = new Customer()
                     {

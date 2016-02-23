@@ -1,9 +1,10 @@
 ﻿namespace OrdersSystem.Models
 {
-    using Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Common;
 
     public class Device
     {
@@ -20,8 +21,7 @@
         [MinLength(ValidationConstants.NameMinLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         [MaxLength(ValidationConstants.NameMaxLength, ErrorMessage = ValidationConstants.DeviceNameErrorMessage)]
         public string Name { get; set; }
-
-        [Required]
+        
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrdersSystem.Common
+﻿namespace OrdersSystem.Common
 {
     public class ValidationConstants
     {
@@ -22,11 +16,14 @@ namespace OrdersSystem.Common
         public const string DeviceNameErrorMessage = "Device name must be between 3 and 150 symbols";
         public const string SupplierNameErrorMessage = "Supplier name must be between 3 and 150 symbols";
         public const string CustomerNameErrorMessage = "Customer name must be between 3 and 150 symbols";
+        public const string AddressErrorMessage = "Address must be between 3 and 500 symbols";
 
         public const int NameMinLength = 3;
         public const int NameMaxLength = 150;
         public const int DescriptionMinLength = 3;
         public const int DescriptionMaxLength = 2000;
         public const int DeviceCountMinRange = 1;
+        public const int AddressMinLength = 3;
+        public const int AddressMaxLength = 500;
     }
 }

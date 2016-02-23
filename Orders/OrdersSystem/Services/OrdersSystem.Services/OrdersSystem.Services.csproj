@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesServices.cs" />
-    <Compile Include="Contracts\ICacheService.cs" />
     <Compile Include="Contracts\ICategoriesServices.cs" />
     <Compile Include="Contracts\ICustomersServices.cs" />
     <Compile Include="Contracts\IDevicesServices.cs" />
@@ -70,7 +69,6 @@
     <Compile Include="Contracts\IUsersServices.cs" />
     <Compile Include="CustomersServices.cs" />
     <Compile Include="DevicesServices.cs" />
-    <Compile Include="CacheService.cs" />
     <Compile Include="InOrdersServices.cs" />
     <Compile Include="OutOrdersServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
