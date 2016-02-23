@@ -8,6 +8,7 @@
     using Models;
     using System.ComponentModel.DataAnnotations;
     using Common;
+
     public class InOrderInputModel : IMapTo<InOrder>
     {
         [Required]

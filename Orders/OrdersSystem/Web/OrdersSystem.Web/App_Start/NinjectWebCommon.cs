@@ -16,6 +16,7 @@ namespace OrdersSystem.Web.App_Start
     using Microsoft.AspNet.Identity;
     using Models;
     using Microsoft.AspNet.Identity.EntityFramework;
+
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

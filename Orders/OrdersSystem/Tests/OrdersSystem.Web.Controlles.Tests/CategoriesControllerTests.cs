@@ -22,7 +22,7 @@
         public void CategoriesControllerAddActionShouldRenderProperView()
         {
             var categoriesServicesMock = new Mock<ICategoriesServices>();
-            categoriesServicesMock.Setup(x => x.Add(new Category { Name = "Delete me"}));
+            categoriesServicesMock.Setup(x => x.Add(new Category { Name = "Delete me" }));
             var controller = new CategoriesController(categoriesServicesMock.Object);
 
             controller.WithCallTo(x => x.Add()).ShouldRenderView("Add");

@@ -75,7 +75,7 @@
 
             viewModel.Workers = this.UsersServices
                 .GetAll()
-                .Where( w => w.Roles.Any(x => x.RoleId == workerRoleId))
+                .Where(w => w.Roles.Any(x => x.RoleId == workerRoleId))
                 .Select(w => new SelectListItem()
                 {
                     Text = w.UserName,

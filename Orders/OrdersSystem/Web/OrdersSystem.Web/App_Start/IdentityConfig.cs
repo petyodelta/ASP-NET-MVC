@@ -86,6 +86,7 @@ namespace OrdersSystem.Web
                 manager.UserTokenProvider = 
                     new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+
             return manager;
         }
     }

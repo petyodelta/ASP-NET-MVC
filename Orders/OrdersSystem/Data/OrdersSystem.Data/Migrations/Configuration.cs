@@ -5,6 +5,7 @@ namespace OrdersSystem.Data.Migrations
     using Models;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
     public sealed class Configuration : DbMigrationsConfiguration<OrdersDbContext>
     {
         public Configuration()

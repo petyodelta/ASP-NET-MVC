@@ -13,6 +13,7 @@
         {
             this.outOrders = new HashSet<OutOrder>();
         }
+
         public int Id { get; set; }
 
         [Required]
