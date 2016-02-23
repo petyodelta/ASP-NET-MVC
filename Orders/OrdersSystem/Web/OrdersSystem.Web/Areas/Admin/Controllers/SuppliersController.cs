@@ -14,12 +14,16 @@
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class SuppliersController : BaseController
     {
-        [Inject]
-        public ISuppliersServices SuppliersServices { get; set; }
+        private readonly ISuppliersServices suppliers;
+
+        public SuppliersController(ISuppliersServices suppliersServices)
+        {
+            this.suppliers = suppliersServices;
+        }
 
         public ActionResult Index()
         {
-            var viewModel = this.SuppliersServices
+            var viewModel = this.suppliers
                 .GetAll()
                 .To<SupplierViewModel>();
 
@@ -38,13 +42,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var supplierName = this.SuppliersServices
+                var supplierName = this.suppliers
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (supplierName == null)
                 {
                     var supplier = this.Mapper.Map<Supplier>(model);
-                    this.SuppliersServices.Add(supplier);
+                    this.suppliers.Add(supplier);
                     TempData["Success"] = GlobalConstants.SupplierAddNotify;
                 }
                 else
@@ -61,7 +65,7 @@
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var viewModel = this.SuppliersServices
+            var viewModel = this.suppliers
                 .GetAll()
                 .Where(x => x.Id == id)
                 .To<SupplierEditModel>()
@@ -76,13 +80,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var supplierName = this.SuppliersServices
+                var supplierName = this.suppliers
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (supplierName == null)
                 {
                     var supplier = this.Mapper.Map<Supplier>(model);
-                    this.SuppliersServices.Update(model.Id, supplier);
+                    this.suppliers.Update(model.Id, supplier);
                     TempData["Success"] = GlobalConstants.SupplierUpdatedNotify;
                 }
                 else
@@ -99,7 +103,7 @@
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            this.SuppliersServices.Delete(id);
+            this.suppliers.Delete(id);
             TempData["Success"] = GlobalConstants.SupplierDeletedNotify;
 
             return this.Redirect("/Admin/Suppliers/Index");

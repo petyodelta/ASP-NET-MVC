@@ -14,12 +14,16 @@
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CategoriesController : BaseController
     {
-        [Inject]
-        public ICategoriesServices CategoriesServices { get; set; }
+        private readonly ICategoriesServices categories;
+        
+        public CategoriesController(ICategoriesServices categoriesServices)
+        {
+            this.categories = categoriesServices;
+        }
 
         public ActionResult Index()
         {
-            var viewModel = this.CategoriesServices.GetAll().To<CategoryViewModel>();
+            var viewModel = this.categories.GetAll().To<CategoryViewModel>();
             return View(viewModel);
         }
 
@@ -35,13 +39,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var categoryName = this.CategoriesServices
+                var categoryName = this.categories
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (categoryName == null)
                 {
                     var category = this.Mapper.Map<Category>(model);
-                    this.CategoriesServices.Add(category);
+                    this.categories.Add(category);
                     TempData["Success"] = GlobalConstants.CategoryAddNotify;
                 }
                 else
@@ -58,7 +62,7 @@
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var viewModel = this.CategoriesServices
+            var viewModel = this.categories
                 .GetAll()
                 .Where(x => x.Id == id)
                 .To<CategoryEditModel>()
@@ -73,13 +77,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var categoryName = this.CategoriesServices
+                var categoryName = this.categories
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (categoryName == null)
                 {
                     var category = this.Mapper.Map<Category>(model);
-                    this.CategoriesServices.Update(model.Id, category);
+                    this.categories.Update(model.Id, category);
                     TempData["Success"] = GlobalConstants.CategoryUpdateNotify;
                 }
                 else
@@ -96,7 +100,7 @@
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            this.CategoriesServices.Delete(id);
+            this.categories.Delete(id);
             TempData["Success"] = GlobalConstants.CategoryDeletedNotify;
 
             return this.Redirect("/Admin/Categories/Index");

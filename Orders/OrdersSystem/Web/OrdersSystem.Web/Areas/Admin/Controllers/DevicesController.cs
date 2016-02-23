@@ -14,15 +14,18 @@
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class DevicesController : BaseController
     {
-        [Inject]
-        public IDevicesServices DevicesServices { get; set; }
+        private readonly ICategoriesServices categories;
+        private readonly IDevicesServices devices;
 
-        [Inject]
-        public ICategoriesServices CategoriesServices { get; set; }
+        public DevicesController(IDevicesServices devicesServices, ICategoriesServices categoriesServices)
+        {
+            this.categories = categoriesServices;
+            this.devices = devicesServices;
+        }
 
         public ActionResult Index()
         {
-            var viewModel = this.DevicesServices
+            var viewModel = this.devices
                .GetAll()
                .To<DeviceViewModel>();
 
@@ -33,7 +36,7 @@
         public ActionResult Add()
         {
             var viewModel = new DeviceInputModel();
-            viewModel.Categories = this.CategoriesServices
+            viewModel.Categories = this.categories
                 .GetAll()
                 .Select(x => new SelectListItem()
                 {
@@ -51,13 +54,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var deviceName = this.DevicesServices
+                var deviceName = this.devices
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (deviceName == null)
                 {
                     var newDevice = this.Mapper.Map<Device>(model);
-                    this.DevicesServices.Add(newDevice);
+                    this.devices.Add(newDevice);
 
                     TempData["Success"] = GlobalConstants.DeviceAddNotify;                    
                 }
@@ -75,13 +78,13 @@
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var viewModel = this.DevicesServices
+            var viewModel = this.devices
                 .GetAll()
                 .Where(x => x.Id == id)
                 .To<DeviceEditModel>()
                 .FirstOrDefault();
 
-            viewModel.Categories = this.CategoriesServices
+            viewModel.Categories = this.categories
                 .GetAll()
                 .Select(x => new SelectListItem()
                 {
@@ -99,13 +102,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var deviceName = this.DevicesServices
+                var deviceName = this.devices
                     .GetAll()
                     .FirstOrDefault(x => x.Name.ToLower() == model.Name.ToLower());
                 if (deviceName == null)
                 {
                     var device = this.Mapper.Map<Device>(model);
-                    this.DevicesServices.Update(model.Id, device);
+                    this.devices.Update(model.Id, device);
                     TempData["Success"] = GlobalConstants.DeviceUpdateNotify;
                 }
                 else
@@ -122,7 +125,7 @@
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            this.DevicesServices.Delete(id);
+            this.devices.Delete(id);
             TempData["Success"] = GlobalConstants.DeviceDeletedNotify;
 
             return this.Redirect("/Admin/Devices/Index");
