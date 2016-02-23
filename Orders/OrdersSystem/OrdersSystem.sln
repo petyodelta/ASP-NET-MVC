@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5C5D71
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersSystem.Common", "Common\OrdersSystem.Common\OrdersSystem.Common.csproj", "{651935A2-2E37-4464-9F6A-FC4BE417B1A7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48D604D0-6571-4CF1-813E-8452346A5654}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersSystem.Web.Routes.Tests", "Tests\OrdersSystem.Web.Routes.Tests\OrdersSystem.Web.Routes.Tests.csproj", "{CFFD7E3B-3596-4626-B915-62892041E25A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{651935A2-2E37-4464-9F6A-FC4BE417B1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{651935A2-2E37-4464-9F6A-FC4BE417B1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{651935A2-2E37-4464-9F6A-FC4BE417B1A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFD7E3B-3596-4626-B915-62892041E25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFD7E3B-3596-4626-B915-62892041E25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFD7E3B-3596-4626-B915-62892041E25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFD7E3B-3596-4626-B915-62892041E25A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +67,6 @@ Global
 		{5A8CEBE7-4F2E-49E9-9CDC-382784E63B61} = {07E328D3-8361-43D6-92D9-1B49C91B5244}
 		{78B81F14-D081-4F0C-86B5-5667EDA54418} = {61805F96-EC04-42E6-943D-C8741FDBF839}
 		{651935A2-2E37-4464-9F6A-FC4BE417B1A7} = {5C5D71C9-7BBD-4876-AE41-6F1BDBD759F8}
+		{CFFD7E3B-3596-4626-B915-62892041E25A} = {48D604D0-6571-4CF1-813E-8452346A5654}
 	EndGlobalSection
 EndGlobal
