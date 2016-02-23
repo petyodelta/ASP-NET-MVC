@@ -32,5 +32,7 @@
 
         public const string CustomerAddNotify = "Customer added";
         public const string CustomerExistsNotify = "Customer already exists";
+        public const string CustomerUpdateNotify = "Customer updated";
+        public const string CustomerDeletedNotify = "Customer deleted";
     }
 }

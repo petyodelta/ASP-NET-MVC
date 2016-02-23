@@ -56,5 +56,42 @@
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var viewModel = this.customers
+                .GetAll()
+                .Where(x => x.Id == id)
+                .To<CustomerEditModel>()
+                .FirstOrDefault();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CustomerEditModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var customer = this.Mapper.Map<Customer>(model);
+                this.customers.Update(model.Id, customer);
+                TempData["Success"] = GlobalConstants.CustomerUpdateNotify;
+                
+                return this.Redirect("/Admin/Customers/Index");
+            }
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            this.customers.Delete(id);
+            TempData["Success"] = GlobalConstants.CustomerDeletedNotify;
+
+            return this.Redirect("/Admin/Categories/Index");
+        }
     }
 }
