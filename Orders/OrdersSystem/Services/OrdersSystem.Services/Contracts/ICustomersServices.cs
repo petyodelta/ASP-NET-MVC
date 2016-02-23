@@ -6,5 +6,11 @@
     public interface ICustomersServices
     {
         IQueryable<Customer> GetAll();
+
+        Customer Add(Customer customer);
+
+        Customer Update(int id, Customer customer);
+
+        void Delete(int id);
     }
 }

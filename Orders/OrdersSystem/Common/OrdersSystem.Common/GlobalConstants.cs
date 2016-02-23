@@ -29,5 +29,8 @@
         public const string SupplierExistsNotify = "Supplier already exists";
         public const string SupplierUpdatedNotify = "Supplier updated";
         public const string SupplierDeletedNotify = "Supplier deleted";
+
+        public const string CustomerAddNotify = "Customer added";
+        public const string CustomerExistsNotify = "Customer already exists";
     }
 }
