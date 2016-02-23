@@ -1,13 +1,15 @@
 ﻿namespace OrdersSystem.Web.Areas.Admin.Controllers
 {
-    using System.Linq;
-    using Services.Contracts;
+    using System.Linq;    
     using System.Web.Mvc;
+
+    using Common;
     using Infrastructure.Mapping;
     using Ninject;
+    using Services.Contracts;
     using ViewModels.Users;
     using Web.Controllers;
-    using Common;
+    
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersController : BaseController
