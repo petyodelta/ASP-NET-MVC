@@ -163,5 +163,15 @@
 
             return this.View(model);
         }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
+        [HttpGet]
+        public ActionResult GetFullDescription(int id)
+        {
+            var repairOrder = this.InOrdersServices.GetById(id);
+            var description = repairOrder.Description;
+
+            return this.Content(description);
+        }
     }
 }

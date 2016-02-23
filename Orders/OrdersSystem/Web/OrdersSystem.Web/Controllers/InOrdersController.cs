@@ -161,11 +161,11 @@
             return this.View(model);           
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         [HttpGet]
         public ActionResult GetFullDescription(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
-            // var viewModel = this.Mapper.Map<InOrderViewModel>(inOrder);
             var description = inOrder.Description;
 
             return this.Content(description);
