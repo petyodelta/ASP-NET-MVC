@@ -160,5 +160,15 @@
 
             return this.View(model);           
         }
+
+        [HttpGet]
+        public ActionResult GetFullDescription(int id)
+        {
+            var inOrder = this.InOrdersServices.GetById(id);
+            // var viewModel = this.Mapper.Map<InOrderViewModel>(inOrder);
+            var description = inOrder.Description;
+
+            return this.Content(description);
+        }
     }
 }
