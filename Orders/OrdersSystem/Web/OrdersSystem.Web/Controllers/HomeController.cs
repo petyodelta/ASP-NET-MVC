@@ -1,30 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace OrdersSystem.Web.Controllers
+﻿namespace OrdersSystem.Web.Controllers
 {
-    public class HomeController : Controller
+    using System.Linq;
+    using System.Web.Mvc;
+    
+    using OrdersSystem.Services.Contracts;
+    using OrdersSystem.Web.Infrastructure.Mapping;
+    using Ninject;
+    using ViewModels.InOrders;
+
+    public class HomeController : BaseController
     {
+        [Inject]
+        public IInOrdersServices InOrdersServices { get; set; }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [OutputCache(Duration = 1 * 60)]
+        [ChildActionOnly]
+        public ActionResult CacheHome()
         {
-            ViewBag.Message = "Your application description page.";
+            var inOrders = this.InOrdersServices
+                .GetAll()
+                .Where(x => x.IsRepair == false)
+                .OrderByDescending(x => x.EndDate)
+                .Take(6)
+                .To<InOrderViewModel>()
+                .ToList();
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+            return this.PartialView("_CacheHomePartial", inOrders);
+        }       
     }
 }
