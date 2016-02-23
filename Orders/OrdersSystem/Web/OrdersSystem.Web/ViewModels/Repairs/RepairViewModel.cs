@@ -5,7 +5,7 @@
     using Infrastructure.Mapping;
     using Models;
     
-    public class RepairsViewModel : IMapFrom<InOrder>
+    public class RepairViewModel : IMapFrom<InOrder>
     {
         public int Id { get; set; }
 

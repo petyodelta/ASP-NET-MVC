@@ -1,10 +1,12 @@
 ﻿namespace OrdersSystem.Services
 {
+    using System;
     using System.Linq;
+
+    using Data.Repository;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Models;
-    using Data.Repository;
-
+    
     public class OutOrdersServices : IOutOrdersServices
     {
         private IRepository<OutOrder> outOrders;
@@ -47,6 +49,16 @@
         public void DeleteById(int id)
         {
             this.outOrders.Delete(id);
+        }
+
+        public OutOrder UpdateStatus(int id, OutOrder outOrder)
+        {
+            var outOrderToUpdate = this.outOrders.GetById(id);
+            outOrderToUpdate.Status = outOrder.Status;
+
+            this.outOrders.SaveChanges();
+
+            return outOrderToUpdate;
         }
     }
 }

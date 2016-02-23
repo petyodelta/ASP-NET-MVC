@@ -1,4 +1,4 @@
-﻿@model OrdersSystem.Web.ViewModels.Repairs.RepairsViewModel
+﻿@model OrdersSystem.Web.ViewModels.Repairs.RepairViewModel
 
 <div>
     <p>
@@ -30,7 +30,7 @@
         } 
     </p>
     <p>
-        <strong>Status: </strong>@Model.Status
+        <strong>Status: </strong><span id="status">@Model.Status</span>
     </p>
     <p>
         <strong>Ordered on: </strong>@Html.DisplayFor(m => m.StartDate)

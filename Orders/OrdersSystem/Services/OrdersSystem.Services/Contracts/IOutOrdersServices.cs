@@ -13,6 +13,8 @@
 
         OutOrder Update(int id, OutOrder outOrder);
 
+        OutOrder UpdateStatus(int id, OutOrder outOrder);
+
         void DeleteById(int id);
     }
 }

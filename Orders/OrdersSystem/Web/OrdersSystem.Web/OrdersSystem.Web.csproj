@@ -277,7 +277,7 @@
     <Compile Include="ViewModels\OutOrders\OutOrderViewModel.cs" />
     <Compile Include="ViewModels\Repairs\RepairEditViewModel.cs" />
     <Compile Include="ViewModels\Repairs\RepairInputModel.cs" />
-    <Compile Include="ViewModels\Repairs\RepairsViewModel.cs" />
+    <Compile Include="ViewModels\Repairs\RepairViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />

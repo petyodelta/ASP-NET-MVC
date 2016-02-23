@@ -171,6 +171,7 @@
             return this.Content(description);
         }
 
+        [Authorize(Roles = GlobalConstants.WorkerRoleName)]
         [HttpPost]
         public ActionResult UpdateStatus(int id, InOrderViewModel model)
         {

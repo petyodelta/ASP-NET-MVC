@@ -35,17 +35,17 @@
             var inOrders = InOrdersServices
                 .GetAll()
                 .Where(x => x.IsRepair == true)
-                .To<RepairsViewModel>();
+                .To<RepairViewModel>();
 
             return View(inOrders);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
         [HttpGet]
         public ActionResult Details(int id)
         {
             var repair = this.InOrdersServices.GetById(id);
-            var viewModel = this.Mapper.Map<RepairsViewModel>(repair);
+            var viewModel = this.Mapper.Map<RepairViewModel>(repair);
 
             return View(viewModel);
         }
@@ -172,6 +172,17 @@
             var description = repairOrder.Description;
 
             return this.Content(description);
+        }
+
+        [Authorize(Roles = GlobalConstants.WorkerRoleName)]
+        [HttpPost]
+        public ActionResult UpdateStatus(int id, RepairViewModel model)
+        {
+            var inOrder = this.InOrdersServices.GetById(id);
+            inOrder.Status = model.Status;
+            this.InOrdersServices.UpdateStatus(id, inOrder);
+            var content = model.Status;
+            return this.Content(content.ToString());
         }
     }
 }
