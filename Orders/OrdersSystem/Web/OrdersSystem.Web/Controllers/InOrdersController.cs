@@ -5,8 +5,8 @@
     using System.Web.Mvc;
 
     using Common;
-    using Models;    
     using Microsoft.AspNet.Identity;
+    using Models;    
     using Ninject;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
@@ -44,6 +44,11 @@
         public ActionResult Details(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
+            if (inOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<InOrderViewModel>(inOrder);
 
             return this.View(viewModel);
@@ -111,6 +116,11 @@
         public ActionResult Edit(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
+            if (inOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<InOrderEditViewModel>(inOrder);
 
             viewModel.Customers = this.CustomersSurvices
@@ -166,6 +176,11 @@
         public ActionResult GetFullDescription(int id)
         {
             var inOrder = this.InOrdersServices.GetById(id);
+            if (inOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var description = inOrder.Description;
 
             return this.Content(description);
@@ -176,6 +191,11 @@
         public ActionResult UpdateStatus(int id, InOrderViewModel model)
         {
             var inOrder = this.InOrdersServices.GetById(id);
+            if (inOrder == null)
+            {
+                return this.View("Error");
+            }
+
             inOrder.Status = model.Status;
             this.InOrdersServices.UpdateStatus(id, inOrder);
             var content = model.Status;

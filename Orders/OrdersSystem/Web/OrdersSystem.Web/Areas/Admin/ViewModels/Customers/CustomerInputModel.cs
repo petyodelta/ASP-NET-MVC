@@ -1,10 +1,11 @@
 ﻿namespace OrdersSystem.Web.Areas.Admin.ViewModels.Customers
 {
+    using System.ComponentModel.DataAnnotations;
+
     using Infrastructure.Mapping;
     using Models;
     using OrdersSystem.Common;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public class CustomerInputModel : IMapTo<Customer>
     {
         [Required]

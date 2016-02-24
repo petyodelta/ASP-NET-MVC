@@ -84,7 +84,7 @@
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View(model);
             }
         }
@@ -117,7 +117,7 @@
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -157,14 +157,14 @@
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("Index", "Home");
                 }
 
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
         
         // GET: /Account/ConfirmEmail
@@ -173,18 +173,18 @@
         {
             if (userId == null || code == null)
             {
-                return View("Error");
+                return this.View("Error");
             }
 
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            return this.View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
         
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return View();
+            return this.View();
         }
         
         // POST: /Account/ForgotPassword
@@ -199,7 +199,7 @@
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    return this.View("ForgotPasswordConfirmation");
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -211,14 +211,14 @@
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
         
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            return View();
+            return this.View();
         }
         
         // GET: /Account/ResetPassword
@@ -236,7 +236,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return this.View(model);
             }
 
             var user = await UserManager.FindByNameAsync(model.Email);
@@ -249,18 +249,18 @@
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return this.RedirectToAction("ResetPasswordConfirmation", "Account");
             }
 
             AddErrors(result);
-            return View();
+            return this.View();
         }
         
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            return View();
+            return this.View();
         }
         
         // POST: /Account/ExternalLogin
@@ -280,12 +280,12 @@
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
-                return View("Error");
+                return this.View("Error");
             }
 
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            return this.View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
         
         // POST: /Account/SendCode
@@ -296,16 +296,16 @@
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return this.View();
             }
 
             // Generate the token and send it
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
-                return View("Error");
+                return this.View("Error");
             }
 
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return this.RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
         
         // GET: /Account/ExternalLoginCallback
@@ -315,7 +315,7 @@
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                return this.RedirectToAction("Login");
             }
 
             // Sign in the user with this external login provider if the user already has a login
@@ -333,7 +333,7 @@
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return this.View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
         
@@ -345,7 +345,7 @@
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return this.RedirectToAction("Index", "Manage");
             }
 
             if (ModelState.IsValid)
@@ -354,7 +354,7 @@
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
-                    return View("ExternalLoginFailure");
+                    return this.View("ExternalLoginFailure");
                 }
 
                 var user = new User { UserName = model.Email, Email = model.Email };

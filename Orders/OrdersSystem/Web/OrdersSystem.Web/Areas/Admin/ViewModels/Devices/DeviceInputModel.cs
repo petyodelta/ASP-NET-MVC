@@ -1,13 +1,13 @@
 ﻿namespace OrdersSystem.Web.Areas.Admin.ViewModels.Devices
 {
-    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using Common;
     using Infrastructure.Mapping;
     using Models;
-    using Common;
-
+    
     public class DeviceInputModel : IMapTo<Device>
     {
         [Required]
