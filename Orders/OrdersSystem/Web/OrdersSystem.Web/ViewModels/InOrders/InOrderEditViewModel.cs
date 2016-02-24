@@ -5,10 +5,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using Common;
     using Infrastructure.Mapping;
     using Models;
-    using Common;
-
+    
     public class InOrderEditViewModel : IMapFrom<InOrder>, IMapTo<InOrder>
     {
         public int Id { get; set; }

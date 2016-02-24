@@ -5,8 +5,8 @@
     using System.Web.Mvc;
 
     using Common;
-    using Models;    
     using Microsoft.AspNet.Identity;
+    using Models;    
     using Ninject;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;

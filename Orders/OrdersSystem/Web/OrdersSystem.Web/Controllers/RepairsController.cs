@@ -2,7 +2,6 @@
 {
     using System;
     using System.Linq;
-    using Services.Contracts;
     using System.Web.Mvc;
 
     using Common;
@@ -10,6 +9,7 @@
     using Microsoft.AspNet.Identity;
     using Models;
     using Ninject;
+    using Services.Contracts;
     using ViewModels.Repairs;
 
     public class RepairsController : BaseController
@@ -37,7 +37,7 @@
                 .Where(x => x.IsRepair == true)
                 .To<RepairViewModel>();
 
-            return View(inOrders);
+            return this.View(inOrders);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName + ", " + GlobalConstants.WorkerRoleName)]
@@ -47,7 +47,7 @@
             var repair = this.InOrdersServices.GetById(id);
             var viewModel = this.Mapper.Map<RepairViewModel>(repair);
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.BossRoleName)]
@@ -182,6 +182,7 @@
             inOrder.Status = model.Status;
             this.InOrdersServices.UpdateStatus(id, inOrder);
             var content = model.Status;
+
             return this.Content(content.ToString());
         }
     }

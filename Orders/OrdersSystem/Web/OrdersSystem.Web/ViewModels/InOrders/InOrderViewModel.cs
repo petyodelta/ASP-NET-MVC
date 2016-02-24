@@ -1,9 +1,10 @@
 ﻿namespace OrdersSystem.Web.ViewModels.InOrders
 {
     using System;
-    using Models;
-    using Infrastructure.Mapping;
 
+    using Infrastructure.Mapping;
+    using Models;
+    
     public class InOrderViewModel : IMapFrom<InOrder>
     {
         public int Id { get; set; }

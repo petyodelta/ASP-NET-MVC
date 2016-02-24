@@ -3,8 +3,8 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common;
-    using Models;
     using Infrastructure.Mapping;
+    using Models;
     
     public class CategoryInputModel : IMapTo<Category>
     {

@@ -2,10 +2,10 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    
+
+    using Ninject;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
-    using Ninject;
     using ViewModels.InOrders;
 
     public class HomeController : BaseController

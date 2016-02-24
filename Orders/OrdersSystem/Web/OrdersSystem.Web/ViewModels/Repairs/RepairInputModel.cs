@@ -1,8 +1,8 @@
 ﻿namespace OrdersSystem.Web.ViewModels.Repairs
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
     using Common;
