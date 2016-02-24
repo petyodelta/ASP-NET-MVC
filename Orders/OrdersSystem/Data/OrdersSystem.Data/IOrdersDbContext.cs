@@ -1,8 +1,9 @@
 ﻿namespace OrdersSystem.Data
 {
-    using OrdersSystem.Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+
+    using OrdersSystem.Models;
 
     public interface IOrdersDbContext
     {

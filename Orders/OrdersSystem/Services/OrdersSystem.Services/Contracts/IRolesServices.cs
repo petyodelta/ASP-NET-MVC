@@ -1,9 +1,10 @@
 ﻿namespace OrdersSystem.Services.Contracts
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
     using System.Linq;
 
+    using Microsoft.AspNet.Identity.EntityFramework;
+    
     public interface IRolesServices
     {
         IQueryable<IdentityRole> All();

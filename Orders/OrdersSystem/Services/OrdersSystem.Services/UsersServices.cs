@@ -1,11 +1,11 @@
 ﻿namespace OrdersSystem.Services
 {
     using System.Linq;
+
+    using Data.Repository;
     using OrdersSystem.Models;
     using OrdersSystem.Services.Contracts;
-    using Data.Repository;
-    using System;
-
+    
     public class UsersServices : IUsersServices
     {
         private IRepository<User> users;

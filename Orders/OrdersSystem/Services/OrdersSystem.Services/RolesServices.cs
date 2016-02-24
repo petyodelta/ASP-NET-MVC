@@ -1,12 +1,13 @@
 ﻿namespace OrdersSystem.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
+
+    using Data;
+    using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using OrdersSystem.Services.Contracts;
-    using Microsoft.AspNet.Identity;
-    using Data;
-    using System.Collections.Generic;
-
+    
     public class RolesServices : IRolesServices
     {
         private IOrdersData data;

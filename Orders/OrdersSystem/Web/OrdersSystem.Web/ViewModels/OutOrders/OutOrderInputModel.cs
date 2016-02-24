@@ -2,13 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
     using Common;
     using Infrastructure.Mapping;
     using Models;
-    using System.ComponentModel.DataAnnotations;
-   
+    
     public class OutOrderInputModel : IMapTo<OutOrder>
     {
         [Required]

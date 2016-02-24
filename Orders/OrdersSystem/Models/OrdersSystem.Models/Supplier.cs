@@ -13,6 +13,7 @@
         {
             this.outOrders = new HashSet<OutOrder>();
         }
+
         public int Id { get; set; }
 
         [Required]
@@ -25,6 +26,5 @@
             get { return this.outOrders; }
             set { this.outOrders = value; }
         }
-
     }
 }

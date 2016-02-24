@@ -13,36 +13,36 @@
         public void OutOrdersTestRouteIndex()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/OutOrders/Index";
+            const string Url = "/OutOrders/Index";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<OutOrdersController>(c => c.Index());
+            routeCollection.ShouldMap(Url).To<OutOrdersController>(c => c.Index());
         }
 
         [Test]
         public void OutOrdersTestRouteDetails()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/OutOrders/Details/1";
+            const string Url = "/OutOrders/Details/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<OutOrdersController>(c => c.Details(1));
+            routeCollection.ShouldMap(Url).To<OutOrdersController>(c => c.Details(1));
         }
 
         [Test]
         public void OutOrdersTestRouteCreate()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/OutOrders/Create";
+            const string Url = "/OutOrders/Create";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<OutOrdersController>(c => c.Create());
+            routeCollection.ShouldMap(Url).To<OutOrdersController>(c => c.Create());
         }
 
         [Test]
         public void OutOrdersTestRouteEdit()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/OutOrders/Edit/1";
+            const string Url = "/OutOrders/Edit/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<OutOrdersController>(c => c.Edit(1));
+            routeCollection.ShouldMap(Url).To<OutOrdersController>(c => c.Edit(1));
         }
     }
 }

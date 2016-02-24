@@ -4,12 +4,11 @@
     using System.Web.Mvc;
 
     using Common;
+    using Models;
     using OrdersSystem.Services.Contracts;
     using OrdersSystem.Web.Infrastructure.Mapping;
-    using Models;
-    using Ninject;
-    using Web.Controllers;
     using ViewModels.Devices;
+    using Web.Controllers;
     
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class DevicesController : BaseController

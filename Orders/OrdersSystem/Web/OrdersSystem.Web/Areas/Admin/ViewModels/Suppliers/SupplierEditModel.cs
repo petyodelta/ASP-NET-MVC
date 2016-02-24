@@ -6,7 +6,7 @@
     using Infrastructure.Mapping;
     using Models;
     
-    public class SupplierEditModel :IMapFrom<Supplier>, IMapTo<Supplier>
+    public class SupplierEditModel : IMapFrom<Supplier>, IMapTo<Supplier>
     {
         public int Id { get; set; }
 

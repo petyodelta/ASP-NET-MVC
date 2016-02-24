@@ -7,6 +7,7 @@
     using Infrastructure.Mapping;
     using Models;
     using Common;
+
     public class DeviceInputModel : IMapTo<Device>
     {
         [Required]

@@ -13,36 +13,36 @@
         public void InOrdersTestRouteIndex()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/InOrders/Index";
+            const string Url = "/InOrders/Index";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<InOrdersController>(c => c.Index());
+            routeCollection.ShouldMap(Url).To<InOrdersController>(c => c.Index());
         }
 
         [Test]
         public void InOrdersTestRouteDetails()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/InOrders/Details/1";
+            const string Url = "/InOrders/Details/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<InOrdersController>(c => c.Details(1));
+            routeCollection.ShouldMap(Url).To<InOrdersController>(c => c.Details(1));
         }
 
         [Test]
         public void InOrdersTestRouteCreate()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/InOrders/Create";
+            const string Url = "/InOrders/Create";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<InOrdersController>(c => c.Create());
+            routeCollection.ShouldMap(Url).To<InOrdersController>(c => c.Create());
         }
 
         [Test]
         public void InOrdersTestRouteEdit()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/InOrders/Edit/1";
+            const string Url = "/InOrders/Edit/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<InOrdersController>(c => c.Edit(1));
+            routeCollection.ShouldMap(Url).To<InOrdersController>(c => c.Edit(1));
         }
     }
 }

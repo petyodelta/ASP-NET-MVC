@@ -9,21 +9,21 @@
     using TestStack.FluentMVCTesting;
 
     [TestFixture]
-    public class CategoriesControllerTests
+    public class CustomersControllerTests
     {
         [TestFixtureSetUp]
         public void Init()
         {
             var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute(typeof(CategoriesController).Assembly);
+            autoMapperConfig.Execute(typeof(CustomersController).Assembly);
         }
 
         [Test]
         public void CategoriesControllerAddActionShouldRenderProperView()
         {
-            var categoriesServicesMock = new Mock<ICategoriesServices>();
-            categoriesServicesMock.Setup(x => x.Add(new Category { Name = "Delete me" }));
-            var controller = new CategoriesController(categoriesServicesMock.Object);
+            var customersServicesMock = new Mock<ICustomersServices>();
+            customersServicesMock.Setup(x => x.Add(new Customer { Name = "Delete me", Address = "Some address" }));
+            var controller = new CustomersController(customersServicesMock.Object);
 
             controller.WithCallTo(x => x.Add()).ShouldRenderView("Add");
         }
@@ -31,15 +31,15 @@
         [Test]
         public void CategoriesControllerEditActionShouldRenderProperView()
         {
-            var categoriesServicesMock = new Mock<ICategoriesServices>();
-            var newCategory = new Category { Name = "Delete me" };
+            var customersServicesMock = new Mock<ICustomersServices>();
+            var newCustomer = new Customer { Name = "Delete me", Address = "Some address" };
 
-            categoriesServicesMock.Setup(x => x.Update(It.IsAny<int>(), newCategory))
-                .Returns(newCategory);
-            var controller = new CategoriesController(categoriesServicesMock.Object);
+            customersServicesMock.Setup(x => x.Update(It.IsAny<int>(), newCustomer))
+                .Returns(newCustomer);
+            var controller = new CustomersController(customersServicesMock.Object);
 
             controller.WithCallTo(x => x.Edit(123))
                 .ShouldRenderView("Edit");
-        }        
+        }
     }
 }

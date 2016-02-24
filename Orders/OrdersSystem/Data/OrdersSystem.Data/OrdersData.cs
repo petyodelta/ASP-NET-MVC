@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using OrdersSystem.Models;
-using OrdersSystem.Data.Repository;
-
-namespace OrdersSystem.Data
+﻿namespace OrdersSystem.Data
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using OrdersSystem.Data.Repository;
+    using OrdersSystem.Models;
+    
     public class OrdersData : IOrdersData
     {
-        private OrdersDbContext context;
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
-
+        private OrdersDbContext context;
+        
         public OrdersData()
             : this(new OrdersDbContext())
         {
@@ -37,7 +35,7 @@ namespace OrdersSystem.Data
         {
             get
             {
-                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleStore = new RoleStore<IdentityRole>(this.context);
                 var rolesManager = new RoleManager<IdentityRole>(roleStore);
                 return rolesManager;
             }
@@ -47,7 +45,7 @@ namespace OrdersSystem.Data
         {
             get
             {
-                var userStore = new UserStore<User>(context);
+                var userStore = new UserStore<User>(this.context);
                 var userManager = new UserManager<User>(userStore);
                 return userManager;
             }

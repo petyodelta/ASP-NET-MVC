@@ -4,8 +4,8 @@
     using System.Linq;
 
     using Data.Repository;
-    using OrdersSystem.Services.Contracts;
     using OrdersSystem.Models;
+    using OrdersSystem.Services.Contracts;
     
     public class OutOrdersServices : IOutOrdersServices
     {

@@ -10,7 +10,6 @@
     using ViewModels.Users;
     using Web.Controllers;
     
-
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersController : BaseController
     {
@@ -78,8 +77,7 @@
                 this.RolesServices.AddRoleToUser(userId, roleId);
                 TempData["Success"] = "Role added to user";
 
-                return RedirectToAction("Index");
-                
+                return RedirectToAction("Index");                
             }
 
             return this.View("Edit", userId);
