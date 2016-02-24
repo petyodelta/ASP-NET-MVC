@@ -41,6 +41,11 @@
         public ActionResult Details(int id)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
+            if (outOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<OutOrderViewModel>(outOrder);
 
             return this.View(viewModel);
@@ -88,6 +93,11 @@
         public ActionResult Edit(int id)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
+            if (outOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<OutOrderEditViewModel>(outOrder);
 
             viewModel.Suppliers = this.SuppliersServices
@@ -136,6 +146,11 @@
         public ActionResult GetFullDescription(int id)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
+            if (outOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var description = outOrder.Description;
 
             return this.Content(description);
@@ -146,6 +161,11 @@
         public ActionResult UpdateStatus(int id, OutOrderViewModel model)
         {
             var outOrder = this.OutOrdersServices.GetById(id);
+            if (outOrder == null)
+            {
+                return this.View("Error");
+            }
+
             outOrder.Status = model.Status;
             this.OutOrdersServices.UpdateStatus(id, outOrder);
             var content = model.Status;

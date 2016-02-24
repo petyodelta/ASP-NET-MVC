@@ -45,6 +45,11 @@
         public ActionResult Details(int id)
         {
             var repair = this.InOrdersServices.GetById(id);
+            if (repair == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<RepairViewModel>(repair);
 
             return this.View(viewModel);
@@ -113,6 +118,11 @@
         public ActionResult Edit(int id)
         {
             var repairOrder = this.InOrdersServices.GetById(id);
+            if (repairOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var viewModel = this.Mapper.Map<RepairEditViewModel>(repairOrder);
 
             viewModel.Customers = this.CustomersSurvices
@@ -169,6 +179,11 @@
         public ActionResult GetFullDescription(int id)
         {
             var repairOrder = this.InOrdersServices.GetById(id);
+            if (repairOrder == null)
+            {
+                return this.View("Error");
+            }
+
             var description = repairOrder.Description;
 
             return this.Content(description);
@@ -178,9 +193,14 @@
         [HttpPost]
         public ActionResult UpdateStatus(int id, RepairViewModel model)
         {
-            var inOrder = this.InOrdersServices.GetById(id);
-            inOrder.Status = model.Status;
-            this.InOrdersServices.UpdateStatus(id, inOrder);
+            var repairOrder = this.InOrdersServices.GetById(id);
+            if (repairOrder == null)
+            {
+                return this.View("Error");
+            }
+
+            repairOrder.Status = model.Status;
+            this.InOrdersServices.UpdateStatus(id, repairOrder);
             var content = model.Status;
 
             return this.Content(content.ToString());
