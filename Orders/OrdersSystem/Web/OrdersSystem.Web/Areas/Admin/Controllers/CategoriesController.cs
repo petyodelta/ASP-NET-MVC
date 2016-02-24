@@ -4,13 +4,12 @@
     using System.Web.Mvc;
 
     using Common;
-    using Ninject;
-    using Models;
     using Infrastructure.Mapping;
+    using Models;
     using OrdersSystem.Services.Contracts;
     using ViewModels.Categories;
     using Web.Controllers;
-    
+
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CategoriesController : BaseController
     {

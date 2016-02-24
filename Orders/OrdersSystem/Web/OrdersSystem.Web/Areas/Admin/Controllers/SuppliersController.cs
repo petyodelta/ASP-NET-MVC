@@ -4,9 +4,8 @@
     using System.Web.Mvc;
 
     using Common;
-    using Models;
-    using Ninject;
     using Infrastructure.Mapping;
+    using Models;
     using Services.Contracts;
     using ViewModels.Suppliers;
     using Web.Controllers;

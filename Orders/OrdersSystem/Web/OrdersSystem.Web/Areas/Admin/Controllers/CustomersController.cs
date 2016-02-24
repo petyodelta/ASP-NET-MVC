@@ -4,11 +4,12 @@
     using System.Web.Mvc;
 
     using Common;
+    using Infrastructure.Mapping;
+    using Models;
     using OrdersSystem.Web.Controllers;
     using Services.Contracts;
-    using Infrastructure.Mapping;
     using ViewModels.Customers;
-    using Models;
+    
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CustomersController : BaseController
     {

@@ -26,6 +26,5 @@
             get { return this.devices; }
             set { this.devices = value; }
         }
-
     }
 }

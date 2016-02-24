@@ -26,6 +26,5 @@
             get { return this.outOrders; }
             set { this.outOrders = value; }
         }
-
     }
 }

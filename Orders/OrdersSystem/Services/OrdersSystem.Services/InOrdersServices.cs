@@ -1,10 +1,10 @@
 ﻿namespace OrdersSystem.Services
 {
-    using System;
     using System.Linq;
-    using OrdersSystem.Models;
-    using OrdersSystem.Services.Contracts;
+
     using Data.Repository;
+    using OrdersSystem.Models;
+    using OrdersSystem.Services.Contracts;    
 
     public class InOrdersServices : IInOrdersServices
     {

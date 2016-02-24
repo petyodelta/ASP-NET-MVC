@@ -13,36 +13,36 @@
         public void RepairsTestRouteIndex()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/Repairs/Index";
+            const string Url = "/Repairs/Index";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<RepairsController>(c => c.Index());
+            routeCollection.ShouldMap(Url).To<RepairsController>(c => c.Index());
         }
 
         [Test]
         public void RepairsTestRouteDetails()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/Repairs/Details/1";
+            const string Url = "/Repairs/Details/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<RepairsController>(c => c.Details(1));
+            routeCollection.ShouldMap(Url).To<RepairsController>(c => c.Details(1));
         }
 
         [Test]
         public void RepairsTestRouteCreate()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/Repairs/Create";
+            const string Url = "/Repairs/Create";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<RepairsController>(c => c.Create());
+            routeCollection.ShouldMap(Url).To<RepairsController>(c => c.Create());
         }
 
         [Test]
         public void RepairsTestRouteEdit()
         {
             var routeCollection = new RouteCollection();
-            const string url = "/Repairs/Edit/1";
+            const string Url = "/Repairs/Edit/1";
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(url).To<RepairsController>(c => c.Edit(1));
+            routeCollection.ShouldMap(Url).To<RepairsController>(c => c.Edit(1));
         }
     }
 }
